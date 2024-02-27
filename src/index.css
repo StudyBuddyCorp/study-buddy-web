@@ -4,7 +4,7 @@
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 95%;
     --foreground: 20 14.3% 4.1%;
 
     --card: 0 0% 100%;
@@ -39,10 +39,10 @@
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
  
-    --card: 20 14.3% 4.1%;
+    --card: 220 10.3% 9%;
     --card-foreground: 60 9.1% 97.8%;
  
-    --popover: 20 14.3% 4.1%;
+    --popover: 220 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
  
     --primary: 60 9.1% 97.8%;
@@ -54,7 +54,7 @@
     --muted: 12 6.5% 15.1%;
     --muted-foreground: 24 5.4% 63.9%;
  
-    --accent: 12 6.5% 15.1%;
+    --accent: 220 6.5% 15.1%;
     --accent-foreground: 60 9.1% 97.8%;
  
     --destructive: 0 62.8% 30.6%;
@@ -72,5 +72,20 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1 {
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl
+  }
+  h2 {
+    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0
+  }
+  h3 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight
+  }
+  h4 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight
+  }
+  p {
+    @apply leading-7 [&:not(:first-child)]:mt-6
   }
 }
