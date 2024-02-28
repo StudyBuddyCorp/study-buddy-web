@@ -8,7 +8,7 @@ interface Props {
 const SelectCourseListType:FC<Props> = ({setListType}) => {
 
     return (
-        <Select>
+        <Select name="course display variant">
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Отображение" />
             </SelectTrigger>
