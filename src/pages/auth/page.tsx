@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/store";
 import { authSlice } from "@/shared/store/reducers/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { ScrollArea } from "@/shared/components/ui/scroll-area";
 
 
 const AuthPage = () => {
@@ -79,65 +80,71 @@ const AuthPage = () => {
     }
 
     return (
-        <div className="fixed flex w-full h-screen justify-center items-center">
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-4 bg-card py-4 px-8 shadow-md rounded-md w-full sm:max-w-md">
-                    <h3>Вход</h3>
-                    <FormField control={form.control} name="email"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Почта</FormLabel>
-                                <FormControl>
-                                    <Input autoComplete="username" placeholder="email@mail.com" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField control={form.control} name="password"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Пароль</FormLabel>
-                                <FormControl>
-                                    <Input autoComplete="password" type="password" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    {state === 'REGISTER' &&
-                        <>
-                            <FormField control={form.control} name="passwordConfirmation"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Подтверждение пароля</FormLabel>
-                                        <FormControl>
-                                            <Input type="password" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField control={form.control} name="name"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Имя</FormLabel>
-                                        <FormControl>
-                                            <Input autoComplete="name" placeholder="Николай" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                        </>
-                    }
-                    <div className="mx-auto">{state === 'LOGIN' ? "Еще нет аккаунта?" : "Уже есть аккаунт?"}<Button variant='ghost' type="button" onClick={handleState} >{state === 'LOGIN' ? "Создать" : "Войти"}</Button></div>
-                    <FormButton state={state} />
-                    <span className="mx-auto text-sm">или</span>
-                    <Button variant='secondary' type="button" onClick={handleGitHubAuth}><Github /></Button>
-                </form>
-            </Form>
-        </div>
+        <ScrollArea >
+            <div className="    flex w-full h-screen justify-center items-center">
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-4 bg-card py-4 px-8 shadow-md rounded-md w-full sm:max-w-md">
+                        <h3>Вход</h3>
+                        <FormField control={form.control} name="email"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Почта</FormLabel>
+                                    <FormControl>
+                                        <Input autoComplete="username" placeholder="email@mail.com" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField control={form.control} name="password"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Пароль</FormLabel>
+                                    <FormControl>
+                                        <Input autoComplete="password" type="password" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        {state === 'REGISTER' &&
+                            <>
+                                <FormField control={form.control} name="passwordConfirmation"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Подтверждение пароля</FormLabel>
+                                            <FormControl>
+                                                <Input type="password" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField control={form.control} name="name"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Имя</FormLabel>
+                                            <FormControl>
+                                                <Input autoComplete="name" placeholder="Николай" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </>
+                        }
+                        <div className="flex flex-col gap-y-2">
+                            <div className="mx-auto text-sm text-gray-700 darktext-gray-300">{state === 'LOGIN' ? "Еще нет аккаунта?" : "Уже есть аккаунт?"}<Button variant='link' type="button" onClick={handleState} >{state === 'LOGIN' ? "Создать" : "Войти"}</Button></div>
+                            <FormButton state={state} />
+                            {/* <span className="mx-auto text-sm">или</span> */}
+                            <Button variant='outline' type="button" onClick={handleGitHubAuth}><Github /></Button>
+                        </div>
+
+
+                    </form>
+                </Form>
+            </div>
+        </ScrollArea>
     )
 }
 

@@ -14,6 +14,9 @@ export const authSlice = createSlice({
     handleSignIn(state, { payload }: { payload: User | null }) {
       state.user = payload;
     },
+    handleSignOut(state) {
+      state.user = null;
+    },
   },
 });
 export const authReducer = authSlice.reducer;

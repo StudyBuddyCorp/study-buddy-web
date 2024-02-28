@@ -6,6 +6,8 @@ import Layout from "./Layout";
 const ErrorPage = lazy(() => import("@/pages/error"));
 const AuthPage = lazy(() => import("@/pages/auth"));
 const DashboardPage = lazy(() => import("@/pages/dashboard"));
+const ProfilePage = lazy(() => import("@/pages/profile"));
+
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +21,11 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <DashboardPage />
-            }
+            },
+            {
+                path: '/profile',
+                element: <ProfilePage />
+            },
         ]
     }
 ])
