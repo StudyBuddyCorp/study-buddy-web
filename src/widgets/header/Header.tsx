@@ -1,14 +1,21 @@
 import { useAppDispatch, useAppSelector } from "@/shared/store";
-import { ModeToggle } from "../../ui/mode-toggle";
+import { ModeToggle } from "../../shared/components/ui/mode-toggle";
 import NavItem from "./NavItem";
-import { Button } from "../../ui/button";
+import { Button } from "../../shared/components/ui/button";
 import { supabase } from "@/shared/lib/supabase";
 import { authSlice } from "@/shared/store/reducers/UserSlice";
+import { ReactNode } from "react";
 
-const links = [
+type Link = { link: string, children: ReactNode }
+
+const links: Link[] = [
     {
         link: '/',
         children: 'Главная'
+    },
+    {
+        link: '/profile',
+        children: 'Профиль'
     }
 ]
 

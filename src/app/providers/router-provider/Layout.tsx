@@ -1,5 +1,5 @@
-import Footer from "@/shared/components/app/Footer";
-import Header from "@/shared/components/app/header/Header";
+import Footer from "@/widgets/footer/Footer";
+import Header from "@/widgets/header/Header";
 import { Suspense, useEffect } from "react";
 import { useOutlet } from "react-router-dom";
 import LoadingRoute from "./LoadingRoute";
