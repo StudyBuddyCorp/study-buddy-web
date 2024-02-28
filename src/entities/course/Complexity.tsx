@@ -23,12 +23,8 @@ const ComplexityCard = ({ complexity }: { complexity: Complexity }) => {
         }
     }, [complexity])
 
-    return (
-        <div>
-            <label className="text-sm font-light" htmlFor="complexity">Сложность</label>
-            <Progress className="mt-1" id="complexity" value={progress} />
-        </div>
-    )
+    return  <Progress aria-label="complexity" value={progress} />
+ 
 }
 
 export default ComplexityCard;

@@ -8,8 +8,8 @@ interface Props {
 const SelectCourseListType:FC<Props> = ({setListType}) => {
 
     return (
-        <Select name="course display variant">
-            <SelectTrigger className="w-[180px]">
+        <Select>
+            <SelectTrigger aria-label="select course display variant" className="w-[180px]">
                 <SelectValue placeholder="Отображение" />
             </SelectTrigger>
             <SelectContent>
