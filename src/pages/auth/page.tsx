@@ -33,7 +33,7 @@ const AuthPage = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            state: 'REGISTER',
+            state: 'LOGIN',
             email: '',
             password: '',
             passwordConfirmation: '',
@@ -53,6 +53,8 @@ const AuthPage = () => {
     }
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        console.log('auth');
+        
         const { state, email, password, name } = values;
         if (state === 'LOGIN') {
             const response = await supabase.auth.signInWithPassword({

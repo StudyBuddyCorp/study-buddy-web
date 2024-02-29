@@ -4,7 +4,7 @@ interface Props {state: 'LOGIN' | "REGISTER"}
 
 const FormButton = ({state}:Props) => {
 
-    const label = state === 'LOGIN' ? "Войти" : "Продолжить"
+    const label = state === 'LOGIN' ? "Войти" : "Создать аккаунт"
 
     return (
         <Button>

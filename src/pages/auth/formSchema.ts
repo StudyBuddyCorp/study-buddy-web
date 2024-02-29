@@ -5,8 +5,8 @@ export const formSchema = z
     state: z.literal("LOGIN").or(z.literal("REGISTER")),
     email: z.string().email(),
     password: z.string().min(6),
-    passwordConfirmation: z.string().min(6),
-    name: z.string(),
+    passwordConfirmation: z.string().optional(),
+    name: z.string().optional(),
   })
   .superRefine(({ password, passwordConfirmation, state, name }, ctx) => {
     if (state === "REGISTER") {

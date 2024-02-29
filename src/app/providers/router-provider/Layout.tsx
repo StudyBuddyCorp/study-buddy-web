@@ -32,7 +32,7 @@ const Layout = () => {
             <Suspense fallback={<LoadingRoute />}>
                 {outlet}
             </Suspense>
-            <Footer />
+            {/* <Footer /> */}
         </main>
     )
 }
