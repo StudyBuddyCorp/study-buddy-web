@@ -23,6 +23,7 @@ const AdminNavigation = () => {
                     <NavigationMenuTrigger>Пользователи</NavigationMenuTrigger>
                     <NavigationMenuContent className="flex flex-col">
                         <Link to='/admin/create/user'><Button variant='link'>Создать аккаунт</Button></Link>
+                        <Link to='/admin/subscribe'><Button variant='link'>Подписать на курс</Button></Link>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
 

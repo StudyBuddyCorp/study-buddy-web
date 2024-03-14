@@ -6,5 +6,5 @@ export const formSchema = z
     name: z.string(),
     department: z.string(),
     specialty: z.string(),
-    group: z.coerce.number().min(1).max(100)
+    group: z.string()
   })

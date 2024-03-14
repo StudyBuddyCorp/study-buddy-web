@@ -3,5 +3,5 @@ export interface CreateUserRequest {
     email: string,
     department: string,
     specialty: string,
-    group: number
+    group: string
 }
