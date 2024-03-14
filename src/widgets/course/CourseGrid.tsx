@@ -12,7 +12,7 @@ const CourseGrid: FC<Props> = ({ courses }) => {
 
     return (
         <div className={clsx("grid gap-4 w-full", courses.length === 1 && 'grid-cols-1', courses.length === 2 && 'grid-cols-2', courses.length % 3 === 0 ? 'grid-cols-3' : 'grid-cols-4')}>
-            {courses.map(course => <Card key={course.id} complexity={course.complexity} description={course.description} name={course.name} />)}
+            {courses.map(course => <Card key={course.id} description={course.description} title={course.title} />)}
         </div>
     )
 }

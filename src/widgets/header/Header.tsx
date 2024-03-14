@@ -3,8 +3,7 @@ import { ModeToggle } from "../../shared/components/ui/mode-toggle";
 import NavItem from "./NavItem";
 import { Button } from "../../shared/components/ui/button";
 import { ReactNode, useEffect, useState } from "react";
-import { userAPI } from "@/shared/store/services/UserService";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { User } from "lucide-react";
 
 type Link = { link: string, children: ReactNode }

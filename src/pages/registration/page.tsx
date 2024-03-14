@@ -38,7 +38,7 @@ const RegistrationPage = () => {
     }
 
     return (
-        <div className="    flex w-full h-screen justify-center items-center">
+        <div className="flex w-full h-screen justify-center items-center">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-4 bg-card py-4 px-8 shadow-md rounded-md w-full sm:max-w-md">
                     <h3>Регистрация</h3>
