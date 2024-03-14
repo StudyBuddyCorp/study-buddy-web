@@ -1,8 +1,11 @@
-import {  useAppSelector } from "@/shared/store";
+import { useAppSelector } from "@/shared/store";
 import { ModeToggle } from "../../shared/components/ui/mode-toggle";
 import NavItem from "./NavItem";
 import { Button } from "../../shared/components/ui/button";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { userAPI } from "@/shared/store/services/UserService";
+import { NavLink, useNavigate } from "react-router-dom";
+import { User } from "lucide-react";
 
 type Link = { link: string, children: ReactNode }
 
@@ -12,31 +15,42 @@ const links: Link[] = [
         children: 'Главная'
     },
     {
-        link: '/profile',
-        children: 'Профиль'
-    }
+        link: '/brs',
+        children: 'БРС'
+    },
+    {
+        link: '/schedule',
+        children: 'Расписание'
+    },
+    {
+        link: '/settings',
+        children: 'Настройки'
+    },
 ]
 
 const Header = () => {
 
-    const { user } = useAppSelector(state => state.authReducer)
-    // const { handleSignOut } = authSlice.actions
-    // const dispatch = useAppDispatch()
+    const [showNav, setShowNav] = useState(false)
+    const { isAuthenticated } = useAppSelector(state => state.authReducer)
 
-    const signOut = async () => {
-        //todo: handle signout
-        // dispatch(handleSignOut())
-    }
+    useEffect(() => {
+        setShowNav(isAuthenticated)
+    }, [isAuthenticated])
 
     return (
-        <header className="relative flex justify-center items-center w-full min-h-4 bg-card p-4">
+        <header className="relative w-full min-h-4 bg-card p-4">
             <nav>
-                <ul className="flex justify-center items-center">
-                    {links.map(item => <NavItem key={item.link} link={item.link}>{item.children}</NavItem>)}
-                    {user ? <Button variant="link" onClick={signOut}>Выйти</Button> : <NavItem link='/auth'>Войти</NavItem>}
+                <ul className="flex justify-end items-center">
+                    {showNav &&
+                        <>
+                            {links.map(item => <NavItem key={item.link} link={item.link}>{item.children}</NavItem>)}
+                            <NavLink to={'/profile'}><Button size='icon' variant='ghost'><User /></Button></NavLink>
+                        </>
+                    }
+                    {!showNav && <NavLink to='/auth'><Button variant='secondary'>Войти</Button></NavLink>}
+                    <li><ModeToggle /></li>
                 </ul>
             </nav>
-            <div className="absolute right-2"><ModeToggle /></div>
         </header>
     )
 }
