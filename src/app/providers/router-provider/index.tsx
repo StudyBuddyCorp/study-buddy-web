@@ -12,6 +12,8 @@ const ProfilePage = lazy(() => import("@/pages/profile"));
 const AdminPage = lazy(() => import("@/pages/admin"));
 const CreateCoursePage = lazy(() => import("@/pages/admin/create/course/page"));
 const CreateUserPage = lazy(() => import("@/pages/admin/create/user/page"));
+const SubscribeToCoursePage = lazy(() => import("@/pages/admin/subscribe/page"));
+
 
 
 export const router = createBrowserRouter([
@@ -45,11 +47,15 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: '/admin/create/course',
-                        element: <CreateCoursePage/>
+                        element: <CreateCoursePage />
                     }, {
                         path: '/admin/create/user',
                         element: <CreateUserPage />
                     },
+                    {
+                        path: '/admin/subscribe',
+                        element: <SubscribeToCoursePage />
+                    }
                 ]
             },
         ]

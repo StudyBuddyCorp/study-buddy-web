@@ -1,5 +1,4 @@
-import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from "@/shared/components/ui/form";
-import { courseAPI } from "@/shared/store/services/CourseService";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/shared/components/ui/form";
 import { Input } from "@/shared/components/ui/input";
 import { SpinnerButton } from "@/shared/components/ui/SpinnerButton";
 
@@ -18,6 +17,8 @@ import { Department } from "@/entities/department/Department";
 import { Specialty } from "@/entities/specialty/Specialty";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { userAPI } from "@/shared/store/services/UserService";
+import { Group } from "@/entities/group/Group";
+import { groupAPI } from "@/shared/store/services/GroupService";
 
 const CreateUserForm = () => {
 
@@ -25,22 +26,51 @@ const CreateUserForm = () => {
     const [disabled, setDisabled] = useState(false)
     const [departments, setDepartments] = useState<Department[] | undefined>(undefined)
     const [specialties, setSpecialties] = useState<Specialty[] | undefined>(undefined)
+    const [groups, setGroups] = useState<Group[] | undefined>(undefined)
     
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            name: '',
+            email: '',
+            department: '',
+            specialty: '',
+            group: ''
+        }
+    })
+
+    const department = form.watch('department')
+    const specialty = form.watch('specialty')
+
     const [create, {isLoading: isCreateLoading}] = userAPI.useCreateStudentMutation()
-    const { data: specialtiesResponse, isLoading: isSpecialtiesLoading } = specialtyAPI.useGetSpecialtyQuery()
     const { data: departmentsResponse, isLoading: isDepartmentsLoadings } = departmentAPI.useGetDepartmentQuery()
+    const { data: specialtiesResponse, isLoading: isSpecialtiesLoading, refetch } = specialtyAPI.useGetSpecialtyQuery(department)
+    const {data: groupsResponse, isLoading: isGroupsLoading, refetch: refetchGroups} = groupAPI.useGetGroupsQuery({department, specialty})
 
     useEffect(() => {
         setDisabled(
             isSpecialtiesLoading ||
             isDepartmentsLoadings ||
+            isGroupsLoading ||
             isCreateLoading
         )
-    }, [isCreateLoading, isDepartmentsLoadings, isSpecialtiesLoading])
+    }, [isCreateLoading, isDepartmentsLoadings, isGroupsLoading, isSpecialtiesLoading])
 
     useEffect(() => {
         setDepartments(departmentsResponse?.departments)
     }, [departmentsResponse?.departments])
+
+    useEffect(() => {
+        setGroups(groupsResponse?.groups)
+    }, [groupsResponse?.groups])
+
+    useEffect(() => {
+        refetch()        
+    }, [department, refetch])
+
+    useEffect(() => {
+        refetchGroups()
+    }, [specialty, refetchGroups])
 
     useEffect(() => {
         setSpecialties(specialtiesResponse?.specialties)
@@ -50,17 +80,7 @@ const CreateUserForm = () => {
         document.title = "Создание аккаунта пользователя"
     }, [])
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            name: '',
-            email: '',
-            department: '',
-            specialty: '',
-            group: 0
-        }
-    })
-
+    
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         await create(values)
     }
@@ -94,8 +114,8 @@ const CreateUserForm = () => {
                     name="department"
                     render={({ field }) => (
                         <FormItem className="flex flex-col">
-                            <Popover>
-                                <PopoverTrigger asChild>
+                            <Popover >
+                                <PopoverTrigger disabled={disabled} asChild>
                                     <FormControl>
                                         <Button
                                             variant="outline"
@@ -150,19 +170,20 @@ const CreateUserForm = () => {
                     render={({ field }) => (
                         <FormItem className="flex flex-col">
                             <Popover>
-                                <PopoverTrigger asChild>
+                                <PopoverTrigger disabled={!department || disabled} asChild>
                                     <FormControl>
                                         <Button
+                                            
                                             variant="outline"
                                             role="combobox"
                                             className={cn(
                                                 "w-auto justify-between",
-                                                !field.value && "text-muted-foreground font-normal"
+                                                !field.value && "text-muted-foreground font-light"
                                             )}
                                         >
-                                            {field.value
+                                            {department ? (field.value
                                                 ? specialties?.find(specialty => specialty.title === field.value)?.title
-                                                : "Специальность"}
+                                                : "Специальность") : "Сперва выберите факультет"}
                                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                         </Button>
                                     </FormControl>
@@ -199,12 +220,57 @@ const CreateUserForm = () => {
                         </FormItem>
                     )}
                 />
-                <FormField control={form.control} name="group"
+                <FormField
+                    control={form.control}
+                    name="group"
                     render={({ field }) => (
-                        <FormItem>
-                            <FormControl>
-                                <Input autoComplete="group" disabled={disabled} type="number" placeholder="Группа" {...field} />
-                            </FormControl>
+                        <FormItem className="flex flex-col">
+                            <Popover>
+                                <PopoverTrigger disabled={!department || !specialty || disabled} asChild>
+                                    <FormControl>
+                                        <Button
+                                            variant="outline"
+                                            role="combobox"
+                                            className={cn(
+                                                "w-auto justify-between",
+                                                !field.value && "text-muted-foreground font-light"
+                                            )}
+                                        >
+                                            {specialty ? (field.value
+                                                ? groups?.find(group => group.id === field.value)?.group
+                                                : "Группа") : "Сперва выберите специальность"}
+                                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                        </Button>
+                                    </FormControl>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-[200px] p-0">
+                                    <Command>
+                                        <CommandInput placeholder="Найти тип..." />
+                                        <CommandEmpty>Тип не найден</CommandEmpty>
+                                        <CommandGroup>
+                                            {groups?.map((group) => (
+                                                <CommandItem
+                                                    value={group.id}
+                                                    key={group.group}
+                                                    onSelect={() => {
+                                                        form.setValue("group", group.id)
+                                                    }}
+                                                >
+                                                    <Check
+                                                        className={cn(
+                                                            "mr-2 h-4 w-4",
+                                                            group.id === field.value
+                                                                ? "opacity-100"
+                                                                : "opacity-0"
+                                                        )}
+                                                    />
+                                                    {group.group}
+                                                </CommandItem>
+                                            ))}
+                                        </CommandGroup>
+                                    </Command>
+                                </PopoverContent>
+                            </Popover>
                             <FormMessage />
                         </FormItem>
                     )}

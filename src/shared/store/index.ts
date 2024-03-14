@@ -5,6 +5,7 @@ import { userAPI } from "./services/UserService";
 import { courseAPI } from "./services/CourseService";
 import { specialtyAPI } from "./services/SpecialtyService";
 import { departmentAPI } from "./services/DepartmentService";
+import { groupAPI } from "./services/GroupService";
 
 export const rootReducer = combineReducers({
   authReducer,
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
   [courseAPI.reducerPath]: courseAPI.reducer,
   [specialtyAPI.reducerPath]: specialtyAPI.reducer,
   [departmentAPI.reducerPath]: departmentAPI.reducer,
+  [groupAPI.reducerPath]: groupAPI.reducer,
 });
 
 export const store = configureStore({
@@ -21,7 +23,8 @@ export const store = configureStore({
       userAPI.middleware,
       courseAPI.middleware,
       specialtyAPI.middleware,
-      departmentAPI.middleware
+      departmentAPI.middleware,
+      groupAPI.middleware,
     ),
 });
 
