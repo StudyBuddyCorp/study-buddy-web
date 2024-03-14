@@ -1,9 +1,7 @@
-import { useAppDispatch, useAppSelector } from "@/shared/store";
+import {  useAppSelector } from "@/shared/store";
 import { ModeToggle } from "../../shared/components/ui/mode-toggle";
 import NavItem from "./NavItem";
 import { Button } from "../../shared/components/ui/button";
-import { supabase } from "@/shared/lib/supabase";
-import { authSlice } from "@/shared/store/reducers/UserSlice";
 import { ReactNode } from "react";
 
 type Link = { link: string, children: ReactNode }
@@ -22,12 +20,12 @@ const links: Link[] = [
 const Header = () => {
 
     const { user } = useAppSelector(state => state.authReducer)
-    const { handleSignOut } = authSlice.actions
-    const dispatch = useAppDispatch()
+    // const { handleSignOut } = authSlice.actions
+    // const dispatch = useAppDispatch()
 
     const signOut = async () => {
-        await supabase.auth.signOut()
-        dispatch(handleSignOut())
+        //todo: handle signout
+        // dispatch(handleSignOut())
     }
 
     return (
