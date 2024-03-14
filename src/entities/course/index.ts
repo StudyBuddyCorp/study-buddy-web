@@ -5,8 +5,6 @@ export enum Complexity{
 }
 export interface Course {
     id: number,
-    name: string,
+    title: string,
     description: string,
-    complexity: Complexity,
-    created_at: Date
 }

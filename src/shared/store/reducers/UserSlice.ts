@@ -3,9 +3,9 @@ import { userAPI } from "../services/UserService";
 import { IUser } from "@/entities/user/IUser";
 type AuthState = {
   user: IUser | null;
-  token: string | null,
-  isLoading: boolean,
-  isAuthenticated: boolean,
+  token: string | null;
+  isLoading: boolean;
+  isAuthenticated: boolean;
 };
 const initialState: AuthState = {
   user: null,
@@ -16,96 +16,92 @@ const initialState: AuthState = {
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    handleLoadLocal(state) {
+      const token = localStorage.getItem("token");
+      const userString = localStorage.getItem("user");
+      if (userString) {
+        const user: IUser = JSON.parse(userString);
+        state.user = user;
+        state.token = token;
+        state.isAuthenticated = true;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addMatcher(
         userAPI.endpoints.registration.matchFulfilled,
         (state, { payload }) => {
-          state.token = payload.token;
-          state.user = payload.user;
-          state.isAuthenticated = true
-          state.isLoading = false
+          const { token, user } = payload;
+          state.token = token;
+          state.user = user;
+          state.isAuthenticated = true;
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
+          state.isLoading = false;
         }
       )
-      .addMatcher(
-        userAPI.endpoints.registration.matchPending,
-        (state) => {
-          state.isLoading = true
-        }
-      )
-      .addMatcher(
-        userAPI.endpoints.registration.matchRejected,
-        (state) => {
-          state.token = null
-          state.user = null
-          state.isAuthenticated = false
-          state.isLoading = false
-        }
-      )
+      .addMatcher(userAPI.endpoints.registration.matchPending, (state) => {
+        state.isLoading = true;
+      })
+      .addMatcher(userAPI.endpoints.registration.matchRejected, (state) => {
+        state.token = null;
+        state.user = null;
+        state.isAuthenticated = false;
+        state.isLoading = false;
+      })
       .addMatcher(
         userAPI.endpoints.login.matchFulfilled,
         (state, { payload }) => {
-          state.token = payload.token;
-          state.user = payload.user;
-          state.isAuthenticated = true
-          state.isLoading = false
+          const { token, user } = payload;
+          state.token = token;
+          state.user = user;
+          state.isAuthenticated = true;
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
+          state.isLoading = false;
         }
       )
-      .addMatcher(
-        userAPI.endpoints.login.matchPending,
-        (state) => {
-          state.isLoading = true
-        }
-      )
-      .addMatcher(
-        userAPI.endpoints.login.matchRejected,
-        (state) => {
-          state.token = null
-          state.user = null
-          state.isAuthenticated = false
-          state.isLoading = false
-        }
-      )
-      .addMatcher(
-        userAPI.endpoints.logout.matchFulfilled,
-        (state) => {
-          state.token = null;
-          state.user = null;
-          state.isAuthenticated = false
-          state.isLoading = false
-        }
-      )
-      .addMatcher(
-        userAPI.endpoints.registration.matchPending,
-        (state) => {
-          state.isLoading = true
-        }
-      )
+      .addMatcher(userAPI.endpoints.login.matchPending, (state) => {
+        state.isLoading = true;
+      })
+      .addMatcher(userAPI.endpoints.login.matchRejected, (state) => {
+        state.token = null;
+        state.user = null;
+        state.isAuthenticated = false;
+        state.isLoading = false;
+      })
+      .addMatcher(userAPI.endpoints.logout.matchFulfilled, (state) => {
+        state.token = null;
+        state.user = null;
+        state.isAuthenticated = false;
+        state.isLoading = false;
+      })
+      .addMatcher(userAPI.endpoints.registration.matchPending, (state) => {
+        state.isLoading = true;
+      })
       .addMatcher(
         userAPI.endpoints.refresh.matchFulfilled,
         (state, { payload }) => {
-          state.token = payload.token;
-          state.user = payload.user;
-          state.isAuthenticated = true
-          state.isLoading = false
+          const { token, user } = payload;
+          state.token = token;
+          state.user = user;
+          state.isAuthenticated = true;
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
+          state.isLoading = false;
         }
       )
-      .addMatcher(
-        userAPI.endpoints.refresh.matchPending,
-        (state) => {
-          state.isLoading = true
-        }
-      )
-      .addMatcher(
-        userAPI.endpoints.refresh.matchRejected,
-        (state) => {
-          state.token = null
-          state.user = null
-          state.isAuthenticated = false
-          state.isLoading = false
-        }
-      )
-  }
+      .addMatcher(userAPI.endpoints.refresh.matchPending, (state) => {
+        state.isLoading = true;
+      })
+      .addMatcher(userAPI.endpoints.refresh.matchRejected, (state) => {
+        state.token = null;
+        state.user = null;
+        state.isAuthenticated = false;
+        state.isLoading = false;
+      });
+  },
 });
 export const authReducer = authSlice.reducer;

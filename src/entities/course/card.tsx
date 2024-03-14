@@ -1,20 +1,16 @@
 import { FC, memo } from "react";
-import { Complexity } from ".";
-import ComplexityCard from "./Complexity";
 
 interface Props {
-    name: string,
+    title: string,
     description: string,
-    complexity: Complexity,
 }
 
-const Card: FC<Props> = memo(({ name, description, complexity }) => {
+const Card: FC<Props> = memo(({ title, description }) => {
 
     return (
         <div className="bg-card p-4 flex flex-col gap-y-4 shadow-sm rounded-sm">
-            <h4>{name}</h4>
+            <h4>{title}</h4>
             <div>{description}</div>
-            <ComplexityCard complexity={complexity} />
         </div>
     )
 })

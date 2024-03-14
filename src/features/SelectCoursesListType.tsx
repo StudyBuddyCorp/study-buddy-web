@@ -15,7 +15,7 @@ const SelectCourseListType: FC<Props> = ({ setListType }) => {
 
     return (
         <Select onValueChange={handleValueChange}>
-            <SelectTrigger aria-label="select course display variant" className="w-[180px]">
+            <SelectTrigger aria-label="select course display variant" className="bg-card hidden sm:flex w-[180px]">
                 <SelectValue placeholder="Отображение" />
             </SelectTrigger>
             <SelectContent>
