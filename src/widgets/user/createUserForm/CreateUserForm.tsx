@@ -22,7 +22,6 @@ import { groupAPI } from "@/shared/store/services/GroupService";
 
 const CreateUserForm = () => {
 
-    // const [create, { isLoading }] = courseAPI.useCreateCourseMutation()
     const [disabled, setDisabled] = useState(false)
     const [departments, setDepartments] = useState<Department[] | undefined>(undefined)
     const [specialties, setSpecialties] = useState<Specialty[] | undefined>(undefined)
