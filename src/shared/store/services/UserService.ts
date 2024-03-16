@@ -4,13 +4,14 @@ import { LogoutResponse } from "@/entities/auth/LogoutResponse";
 import { RegistrationRequest } from "@/entities/auth/RegistrationRequest";
 import { CreateUserRequest } from "@/entities/user/CreateUserReques";
 import { CreateUserResponse } from "@/entities/user/CreateUserResponse";
+import { GetStudentsResponse } from "@/entities/user/GetStudentsResponse";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const userAPI = createApi({
   reducerPath: "userAPI",
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
-  tagTypes: ["user"],
+  tagTypes: ["user", "students"],
   endpoints: (build) => ({
     registration: build.mutation<AuthenticationResponse, RegistrationRequest>({
       query: (request) => ({
@@ -55,6 +56,15 @@ export const userAPI = createApi({
         body: request,
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       }),
+      invalidatesTags: ['students']
+    }),
+    getStudents: build.query<GetStudentsResponse, void>({
+      query: () => ({
+        url: "/users/get-students",
+        credentials: "include",
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      }),
+      providesTags: () => ["students"],
     }),
   }),
 });

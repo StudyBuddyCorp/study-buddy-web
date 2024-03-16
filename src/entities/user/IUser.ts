@@ -1,4 +1,7 @@
 import { Course } from "../course"
+import { Department } from "../department/Department"
+import { Group } from "../group/Group"
+import { Specialty } from "../specialty/Specialty"
 
 export enum Role {
     TEACHER = "TEACHER",
@@ -16,9 +19,9 @@ export interface IUser {
     name: string,
     imageUrl: string,
 
-    department: string,
-    speciality: string,
-    group: string
+    department: Department,
+    speciality: Specialty,
+    group: Group,
 
     studiedCourses: Course[],
     taughtCourses: Course[],
