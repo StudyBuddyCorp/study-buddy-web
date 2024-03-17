@@ -7,26 +7,20 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "./formSchema";
 import { useEffect, useState } from "react";
-import { specialtyAPI } from "@/shared/store/services/SpecialtyService";
-import { departmentAPI } from "@/shared/store/services/DepartmentService";
+import { useGetSpecialtyQuery } from "@/shared/store/services/SpecialtyService";
+import { useGetDepartmentQuery } from "@/shared/store/services/DepartmentService";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/components/ui/popover";
 import { Button } from "@/shared/components/ui/button";
 import { cn } from "@/shared/lib/utils";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/shared/components/ui/command";
-import { Department } from "@/entities/department/Department";
-import { Specialty } from "@/entities/specialty/Specialty";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { userAPI } from "@/shared/store/services/UserService";
-import { Group } from "@/entities/group/Group";
-import { groupAPI } from "@/shared/store/services/GroupService";
+import { useGetGroupsQuery } from "@/shared/store/services/GroupService";
 
 const CreateUserForm = () => {
 
     const [disabled, setDisabled] = useState(false)
-    const [departments, setDepartments] = useState<Department[] | undefined>(undefined)
-    const [specialties, setSpecialties] = useState<Specialty[] | undefined>(undefined)
-    const [groups, setGroups] = useState<Group[] | undefined>(undefined)
-    
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -41,11 +35,18 @@ const CreateUserForm = () => {
     const department = form.watch('department')
     const specialty = form.watch('specialty')
 
-    const [create, {isLoading: isCreateLoading}] = userAPI.useCreateStudentMutation()
-    const { data: departmentsResponse, isLoading: isDepartmentsLoadings } = departmentAPI.useGetDepartmentQuery()
-    const { data: specialtiesResponse, isLoading: isSpecialtiesLoading, refetch } = specialtyAPI.useGetSpecialtyQuery(department)
-    const {data: groupsResponse, isLoading: isGroupsLoading, refetch: refetchGroups} = groupAPI.useGetGroupsQuery({department, specialty})
+    const [create, { isLoading: isCreateLoading }] = userAPI.useCreateStudentMutation()
+    const { data: departments, isLoading: isDepartmentsLoadings } = useGetDepartmentQuery()
+    const { data: specialties, isLoading: isSpecialtiesLoading, refetch: refetchSpecialties } = useGetSpecialtyQuery(department)
+    const { data: groups, isLoading: isGroupsLoading, refetch: refetchGroups } =useGetGroupsQuery({department, specialty})
 
+    useEffect(() => {
+        document.title = "Создание аккаунта пользователя"
+    }, [])
+
+    useEffect(() => {
+        
+    }, [])
     useEffect(() => {
         setDisabled(
             isSpecialtiesLoading ||
@@ -55,31 +56,16 @@ const CreateUserForm = () => {
         )
     }, [isCreateLoading, isDepartmentsLoadings, isGroupsLoading, isSpecialtiesLoading])
 
-    useEffect(() => {
-        setDepartments(departmentsResponse?.departments)
-    }, [departmentsResponse?.departments])
 
     useEffect(() => {
-        setGroups(groupsResponse?.groups)
-    }, [groupsResponse?.groups])
-
-    useEffect(() => {
-        refetch()        
-    }, [department, refetch])
+        refetchSpecialties()
+    }, [department, refetchSpecialties])
 
     useEffect(() => {
         refetchGroups()
     }, [specialty, refetchGroups])
 
-    useEffect(() => {
-        setSpecialties(specialtiesResponse?.specialties)
-    }, [specialtiesResponse?.specialties])
 
-    useEffect(() => {
-        document.title = "Создание аккаунта пользователя"
-    }, [])
-
-    
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         await create(values)
     }
@@ -125,7 +111,7 @@ const CreateUserForm = () => {
                                             )}
                                         >
                                             {field.value
-                                                ? departments?.find(department => department.title === field.value)?.title
+                                                ? departments?.find(department => department === field.value)
                                                 : "Факультет"}
                                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                         </Button>
@@ -138,21 +124,21 @@ const CreateUserForm = () => {
                                         <CommandGroup>
                                             {departments?.map((department) => (
                                                 <CommandItem
-                                                    value={department.title}
-                                                    key={department.title}
+                                                    value={department}
+                                                    key={department}
                                                     onSelect={() => {
-                                                        form.setValue("department", department.title)
+                                                        form.setValue("department", department)
                                                     }}
                                                 >
                                                     <Check
                                                         className={cn(
                                                             "mr-2 h-4 w-4",
-                                                            department.title === field.value
+                                                            department === field.value
                                                                 ? "opacity-100"
                                                                 : "opacity-0"
                                                         )}
                                                     />
-                                                    {department.title}
+                                                    {department}
                                                 </CommandItem>
                                             ))}
                                         </CommandGroup>
@@ -172,7 +158,7 @@ const CreateUserForm = () => {
                                 <PopoverTrigger disabled={!department || disabled} asChild>
                                     <FormControl>
                                         <Button
-                                            
+
                                             variant="outline"
                                             role="combobox"
                                             className={cn(
@@ -181,7 +167,7 @@ const CreateUserForm = () => {
                                             )}
                                         >
                                             {department ? (field.value
-                                                ? specialties?.find(specialty => specialty.title === field.value)?.title
+                                                ? specialties?.find(specialty => specialty === field.value)
                                                 : "Специальность") : "Сперва выберите факультет"}
                                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                         </Button>
@@ -194,21 +180,21 @@ const CreateUserForm = () => {
                                         <CommandGroup>
                                             {specialties?.map((specialty) => (
                                                 <CommandItem
-                                                    value={specialty.title}
-                                                    key={specialty.title}
+                                                    value={specialty}
+                                                    key={specialty}
                                                     onSelect={() => {
-                                                        form.setValue("specialty", specialty.title)
+                                                        form.setValue("specialty", specialty)
                                                     }}
                                                 >
                                                     <Check
                                                         className={cn(
                                                             "mr-2 h-4 w-4",
-                                                            specialty.title === field.value
+                                                            specialty === field.value
                                                                 ? "opacity-100"
                                                                 : "opacity-0"
                                                         )}
                                                     />
-                                                    {specialty.title}
+                                                    {specialty}
                                                 </CommandItem>
                                             ))}
                                         </CommandGroup>

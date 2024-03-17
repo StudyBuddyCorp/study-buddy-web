@@ -6,13 +6,16 @@ export const specialtyAPI = createApi({
   reducerPath: "specialtyAPI",
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   endpoints: (build) => ({
-    getSpecialty: build.query<GetSpecialtiesResponse, string>({
+    getSpecialty: build.query<string[], string | undefined>({
       query: (department) => ({
         url: "/specialties/get",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         credentials: "include",
         params: { department },
       }),
+      transformResponse: (response: GetSpecialtiesResponse) => response.specialties
     }),
   }),
 });
+
+export const { useGetSpecialtyQuery } = specialtyAPI;

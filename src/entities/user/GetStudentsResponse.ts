@@ -1,5 +1,5 @@
-import { IUser } from "./IUser";
+import { StudentTableData } from "./StudentTableData";
 
 export interface GetStudentsResponse extends Response {
-  students: IUser[];
+  students: StudentTableData[];
 }
