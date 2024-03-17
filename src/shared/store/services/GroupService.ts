@@ -1,5 +1,4 @@
 import { GetGroupsRequest } from "@/entities/group/GetGroupsRequest";
-import { GetGroupsResponse } from "@/entities/group/GetGroupsResponse";
 import { Group } from "@/entities/group/Group";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
@@ -15,7 +14,6 @@ export const groupAPI = createApi({
         credentials: "include",
         params: { department, specialty },
       }),
-      transformResponse: (response: GetGroupsResponse) => response.groups
     }),
   }),
 });

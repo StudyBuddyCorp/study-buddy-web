@@ -13,14 +13,14 @@ const UserTable = () => {
 
     const [department, setDepartment] = useState('')
     const [specialty, setSpecialty] = useState('')
-    const [group, setGroup] = useState('')
+    const [groupId, setGroup] = useState('')
     const [search, setSearch] = useState('')
     const debouncedSearch = useDebounce(search, 500)
 
     const { data: departments } = useGetDepartmentQuery()
     const { data: specialties, refetch: refetchSpecialties } = useGetSpecialtyQuery(department)
     const { data: groups, refetch: refetchGroups } = useGetGroupsQuery({ department, specialty })
-    const { data: students, isLoading, isFetching } = useGetStudentsWithParamsQuery({ name: debouncedSearch, department, specialty, group })
+    const { data: students, isLoading, isFetching } = useGetStudentsWithParamsQuery({ name: debouncedSearch, department, specialty, groupId })
 
     useEffect(() => {
         setSpecialty('')
@@ -70,7 +70,7 @@ const UserTable = () => {
                         <SelectValue placeholder="Группа" />
                     </SelectTrigger>
                     <SelectContent>
-                        {groups?.map(group => <SelectItem key={group.id} value={group.id} > {group.group}</SelectItem>)}
+                        {groups?.map(group => <SelectItem key={group.id} value={group.id} >{group.number}</SelectItem>)}
                     </SelectContent>
                 </Select >
             </div>
@@ -87,9 +87,9 @@ const UserTable = () => {
                         <TableRow key={student.id}>
                             <TableCell className="font-semibold">{student.name}</TableCell>
                             <TableCell>{student.email}</TableCell>
-                            <TableCell>{student.departmentTitle}</TableCell>
-                            <TableCell>{student.specialityTitle}</TableCell>
-                            <TableCell>{student.group.group}</TableCell>
+                            <TableCell>{student.department.title}</TableCell>
+                            <TableCell>{student.specialty.title}</TableCell>
+                            <TableCell>{student.group.number}</TableCell>
 
                         </TableRow>
                     )}

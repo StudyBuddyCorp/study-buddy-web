@@ -68,8 +68,8 @@ export const userAPI = createApi({
       providesTags: () => ["students"],
     }),
     getStudentsWithParams: build.query<
-      StudentTableData[],
-      { name: string; department: string; specialty: string; group: string }
+      User[],
+      { name: string; department: string; specialty: string; groupId: string }
     >({
       query: (params) => ({
         url: "/users/get-students",
@@ -78,7 +78,6 @@ export const userAPI = createApi({
         params,
       }),
       providesTags: () => ["students"],
-      transformResponse: (response: GetStudentsResponse) => response.students,
     }),
   }),
 });

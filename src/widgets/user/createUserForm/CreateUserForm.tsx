@@ -222,7 +222,7 @@ const CreateUserForm = () => {
                                             )}
                                         >
                                             {specialty ? (field.value
-                                                ? groups?.find(group => group.id === field.value)?.group
+                                                ? groups?.find(group => group.id === field.value)?.number
                                                 : "Группа") : "Сперва выберите специальность"}
                                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                         </Button>
@@ -236,7 +236,7 @@ const CreateUserForm = () => {
                                             {groups?.map((group) => (
                                                 <CommandItem
                                                     value={group.id}
-                                                    key={group.group}
+                                                    key={group.number}
                                                     onSelect={() => {
                                                         form.setValue("group", group.id)
                                                     }}
@@ -249,7 +249,7 @@ const CreateUserForm = () => {
                                                                 : "opacity-0"
                                                         )}
                                                     />
-                                                    {group.group}
+                                                    {group.number}
                                                 </CommandItem>
                                             ))}
                                         </CommandGroup>

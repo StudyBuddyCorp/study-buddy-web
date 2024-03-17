@@ -1,4 +1,4 @@
 export interface Group {
     id: string
-    group: string
+    number: number
 }

@@ -2,22 +2,14 @@ import { Course } from "@/entities/course";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/components/ui/table";
 import { courseAPI } from "@/shared/store/services/CourseService";
 import { Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
 
 interface TableProps {
     setCourse: (course: Course) => void
 }
 
-const CoursesTable = ({setCourse}:TableProps) => {
+const CoursesTable = ({ setCourse }: TableProps) => {
 
-    const [courses, setCourses] = useState<Course[]>([])
-    const { data, isLoading } = courseAPI.useGetCoursesQuery()
-
-    useEffect(() => {
-        if (data?.courses) {
-            setCourses(data?.courses)
-        }
-    }, [data?.courses])
+    const { data: courses, isLoading } = courseAPI.useGetCoursesQuery()
 
     if (isLoading) {
         return (
@@ -33,7 +25,7 @@ const CoursesTable = ({setCourse}:TableProps) => {
                 <TableHead>Описание</TableHead>
             </TableHeader>
             <TableBody>
-                {courses.map(course =>
+                {courses?.map(course =>
                     <TableRow className="cursor-pointer" onClick={() => setCourse(course)} key={course.id}>
                         <TableCell className="font-semibold">{course.title}</TableCell>
                         <TableCell>{course.description}</TableCell>

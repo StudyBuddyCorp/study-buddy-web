@@ -1,4 +1,3 @@
-import { GetSpecialtiesResponse } from "@/entities/specialty/GetSpecialtiesResponse";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -13,7 +12,6 @@ export const specialtyAPI = createApi({
         credentials: "include",
         params: { department },
       }),
-      transformResponse: (response: GetSpecialtiesResponse) => response.specialties
     }),
   }),
 });

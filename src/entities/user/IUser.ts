@@ -20,7 +20,7 @@ export interface IUser {
     imageUrl: string,
 
     department: Department,
-    speciality: Specialty,
+    specialty: Specialty,
     group: Group,
 
     studiedCourses: Course[],
