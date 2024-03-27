@@ -1,6 +1,6 @@
+import { Course } from "@/entities/course";
 import { CreateCourseRequest } from "@/entities/course/CreateCourseRequest";
 import { CreateCourseResponse } from "@/entities/course/CreateCourseResponse";
-import { GetCoursesResponse } from "@/entities/course/GetCoursesResponse";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -19,7 +19,7 @@ export const courseAPI = createApi({
       }),
       invalidatesTags: ["courses"],
     }),
-    getCourses: build.query<GetCoursesResponse, void>({
+    getCourses: build.query<Course[], void>({
       query: () => ({
         url: "/courses/get",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

@@ -5,6 +5,7 @@ import { RegistrationRequest } from "@/entities/auth/RegistrationRequest";
 import { CreateUserRequest } from "@/entities/user/CreateUserReques";
 import { CreateUserResponse } from "@/entities/user/CreateUserResponse";
 import { GetStudentsResponse } from "@/entities/user/GetStudentsResponse";
+import { StudentTableData } from "@/entities/user/StudentTableData";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -56,7 +57,7 @@ export const userAPI = createApi({
         body: request,
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       }),
-      invalidatesTags: ['students']
+      invalidatesTags: ["students"],
     }),
     getStudents: build.query<GetStudentsResponse, void>({
       query: () => ({
@@ -66,5 +67,19 @@ export const userAPI = createApi({
       }),
       providesTags: () => ["students"],
     }),
+    getStudentsWithParams: build.query<
+      User[],
+      { name: string; department: string; specialty: string; groupId: string }
+    >({
+      query: (params) => ({
+        url: "/users/get-students",
+        credentials: "include",
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        params,
+      }),
+      providesTags: () => ["students"],
+    }),
   }),
 });
+
+export const { useGetStudentsWithParamsQuery } = userAPI;

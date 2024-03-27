@@ -6,12 +6,15 @@ export const departmentAPI = createApi({
   reducerPath: "departmentAPI",
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   endpoints: (build) => ({
-    getDepartment: build.query<GetDepartmentsResponse, void>({
+    getDepartment: build.query<string[], void>({
       query: () => ({
         url: "/departments/get",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         credentials: "include",
       }),
+      transformResponse: (response: GetDepartmentsResponse) =>
+        response.departments,
     }),
   }),
 });
+export const { useGetDepartmentQuery } = departmentAPI;

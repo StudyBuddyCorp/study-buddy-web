@@ -3,18 +3,14 @@ import SelectCourseListType from "@/features/SelectCoursesListType";
 import { courseAPI } from "@/shared/store/services/CourseService";
 import CourseGrid from "@/widgets/course/CourseGrid";
 import CourseList from "@/widgets/course/CourseList";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 const DashboardPage = () => {
 
-    const [courses, setCourses] = useState<Course[] | undefined>(undefined)
-    const { data } = courseAPI.useGetCoursesQuery();
+    const { data: courses } = courseAPI.useGetCoursesQuery();
     const [listType, setListType] = useState<'GRID' | 'LIST'>('LIST')
 
-    useEffect(() => {
-        setCourses(data?.courses)
-    }, [data?.courses])
 
     return (
         <div className="w-full md:max-w-3xl mx-auto flex flex-col gap-y-4 mt-4 p-2 sm:p-0">
