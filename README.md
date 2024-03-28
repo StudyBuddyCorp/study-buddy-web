@@ -1,3 +1,4 @@
+[![CI](https://github.com/woodemai/study-buddy/actions/workflows/node.js.yml/badge.svg)](https://github.com/woodemai/study-buddy/actions/workflows/node.js.yml)
 # Study Buddy
 
 This application aims to simplify student lives.
