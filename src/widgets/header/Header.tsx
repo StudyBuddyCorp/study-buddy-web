@@ -27,6 +27,10 @@ const links: Link[] = [
         link: '/settings',
         children: 'Настройки'
     },
+    {
+        link: '/profile',
+        children: <User />
+    },
 ]
 
 const Header = () => {
@@ -39,15 +43,10 @@ const Header = () => {
     }, [isAuthenticated])
 
     return (
-        <header className="relative w-full min-h-4 bg-card p-4">
-            <nav>
-                <ul className="flex justify-end items-center">
-                    {showNav &&
-                        <>
-                            {links.map(item => <NavItem key={item.link} link={item.link}>{item.children}</NavItem>)}
-                            <NavLink to={'/profile'}><Button size='icon' variant='ghost'><User /></Button></NavLink>
-                        </>
-                    }
+        <header className="relative w-full min-h-4 bg-card p-2 pr-4">
+            <nav className="flex justify-end">
+                <ul className="flex justify-evenly gap-2 items-center">
+                    {showNav && links.map(item => <NavItem key={item.link} link={item.link}>{item.children}</NavItem>)}
                     {!showNav && <NavLink to='/auth'><Button variant='secondary'>Войти</Button></NavLink>}
                     <li><ModeToggle /></li>
                 </ul>

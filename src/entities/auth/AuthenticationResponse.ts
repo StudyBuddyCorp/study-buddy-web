@@ -1,7 +1,6 @@
-import { Response } from "../api/Response";
 import { IUser } from "../user/IUser";
 
-export interface AuthenticationResponse extends Response{
+export interface AuthenticationResponse{
     user: IUser
     token: string
 }

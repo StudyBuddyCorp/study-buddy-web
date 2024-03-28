@@ -6,26 +6,28 @@ import { courseAPI } from "./services/CourseService";
 import { specialtyAPI } from "./services/SpecialtyService";
 import { departmentAPI } from "./services/DepartmentService";
 import { groupAPI } from "./services/GroupService";
+import { subscribeReducer } from "./reducers/SubscribeSlice";
 
 export const rootReducer = combineReducers({
-  authReducer,
-  [userAPI.reducerPath]: userAPI.reducer,
-  [courseAPI.reducerPath]: courseAPI.reducer,
-  [specialtyAPI.reducerPath]: specialtyAPI.reducer,
-  [departmentAPI.reducerPath]: departmentAPI.reducer,
-  [groupAPI.reducerPath]: groupAPI.reducer,
+    authReducer,
+    subscribeReducer,
+    [userAPI.reducerPath]: userAPI.reducer,
+    [courseAPI.reducerPath]: courseAPI.reducer,
+    [specialtyAPI.reducerPath]: specialtyAPI.reducer,
+    [departmentAPI.reducerPath]: departmentAPI.reducer,
+    [groupAPI.reducerPath]: groupAPI.reducer,
 });
 
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(
-      userAPI.middleware,
-      courseAPI.middleware,
-      specialtyAPI.middleware,
-      departmentAPI.middleware,
-      groupAPI.middleware,
-    ),
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(
+            userAPI.middleware,
+            courseAPI.middleware,
+            specialtyAPI.middleware,
+            departmentAPI.middleware,
+            groupAPI.middleware,
+        ),
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

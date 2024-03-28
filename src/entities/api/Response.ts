@@ -1,4 +1,4 @@
-export interface Response {
-    status: number,
-    message: string
+export interface Response<T> {
+    _embedded: T,
+    _links: any
 }

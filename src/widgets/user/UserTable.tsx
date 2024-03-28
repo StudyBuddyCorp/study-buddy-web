@@ -5,7 +5,7 @@ import { useDebounce } from "@/shared/hooks/useDebounce"
 import { useGetDepartmentQuery } from "@/shared/store/services/DepartmentService"
 import { useGetGroupsQuery } from "@/shared/store/services/GroupService"
 import { useGetSpecialtyQuery } from "@/shared/store/services/SpecialtyService"
-import { useGetStudentsWithParamsQuery } from "@/shared/store/services/UserService"
+import { useGetStudentsQuery } from "@/shared/store/services/UserService"
 import { Loader2 } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -20,7 +20,7 @@ const UserTable = () => {
     const { data: departments } = useGetDepartmentQuery()
     const { data: specialties, refetch: refetchSpecialties } = useGetSpecialtyQuery(department)
     const { data: groups, refetch: refetchGroups } = useGetGroupsQuery({ department, specialty })
-    const { data: students, isLoading, isFetching } = useGetStudentsWithParamsQuery({ name: debouncedSearch, department, specialty, groupId })
+    const { data: students, isLoading, isFetching } = useGetStudentsQuery({ name: debouncedSearch, department, specialty, groupId })
 
     useEffect(() => {
         setSpecialty('')
@@ -57,7 +57,7 @@ const UserTable = () => {
                         {departments?.map(dep => <SelectItem key={dep} value={dep} > {dep}</SelectItem>)}
                     </SelectContent>
                 </Select >
-                <Select onValueChange={value => setSpecialty(value)}>
+                <Select disabled={!department} onValueChange={value => setSpecialty(value)}>
                     <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Специальность" />
                     </SelectTrigger>
@@ -65,7 +65,7 @@ const UserTable = () => {
                         {specialties?.map(specialty => <SelectItem key={specialty} value={specialty} > {specialty}</SelectItem>)}
                     </SelectContent>
                 </Select >
-                <Select onValueChange={value => setGroup(value)}>
+                <Select disabled={!specialty} onValueChange={value => setGroup(value)}>
                     <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Группа" />
                     </SelectTrigger>
@@ -87,16 +87,16 @@ const UserTable = () => {
                         <TableRow key={student.id}>
                             <TableCell className="font-semibold">{student.name}</TableCell>
                             <TableCell>{student.email}</TableCell>
-                            <TableCell>{student.department.title}</TableCell>
-                            <TableCell>{student.specialty.title}</TableCell>
-                            <TableCell>{student.group.number}</TableCell>
+                            <TableCell>{student.departmentTitle}</TableCell>
+                            <TableCell>{student.specialtyTitle}</TableCell>
+                            <TableCell>{student.groupNumber}</TableCell>
 
                         </TableRow>
                     )}
                     {isFetching && <div className="w-full h-full flex justify-center items-center bg-card/70 absolute inset-0"><Loader2 className="animate-spin" /></div>}
-                    {!students?.length && <h5 className="w-full text-center">Студенты не найдены</h5>}
                 </TableBody>
             </Table>
+            {!students?.length && <h3 className="w-full text-center p-8">Студенты не найдены</h3>}
         </>
     )
 }

@@ -6,7 +6,7 @@ export const specialtyAPI = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   endpoints: (build) => ({
     getSpecialty: build.query<string[], string | undefined>({
-      query: (department) => ({
+      query: (department?: string) => ({
         url: "/specialties/get",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         credentials: "include",

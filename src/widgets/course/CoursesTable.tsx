@@ -1,15 +1,16 @@
-import { Course } from "@/entities/course";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/components/ui/table";
-import { courseAPI } from "@/shared/store/services/CourseService";
+import { useAppDispatch } from "@/shared/store";
+import { subscribeSlice } from "@/shared/store/reducers/SubscribeSlice";
+import { useGetCoursesQuery } from "@/shared/store/services/CourseService";
 import { Loader2 } from "lucide-react";
 
-interface TableProps {
-    setCourse: (course: Course) => void
-}
 
-const CoursesTable = ({ setCourse }: TableProps) => {
 
-    const { data: courses, isLoading } = courseAPI.useGetCoursesQuery()
+const CoursesTable = () => {
+
+    const { data: courses, isLoading } = useGetCoursesQuery()
+    const { setCourse } = subscribeSlice.actions
+    const dispatch = useAppDispatch()
 
     if (isLoading) {
         return (
@@ -18,6 +19,8 @@ const CoursesTable = ({ setCourse }: TableProps) => {
             </div>
         )
     }
+
+
     return (
         <Table className="bg-card shadow-sm rounded-md">
             <TableHeader>
@@ -26,7 +29,7 @@ const CoursesTable = ({ setCourse }: TableProps) => {
             </TableHeader>
             <TableBody>
                 {courses?.map(course =>
-                    <TableRow className="cursor-pointer" onClick={() => setCourse(course)} key={course.id}>
+                    <TableRow onClick={() => dispatch(setCourse(course))} className="cursor-pointer" key={course.id}>
                         <TableCell className="font-semibold">{course.title}</TableCell>
                         <TableCell>{course.description}</TableCell>
                     </TableRow>
