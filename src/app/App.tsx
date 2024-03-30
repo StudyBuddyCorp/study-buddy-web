@@ -1,3 +1,4 @@
+import { Toaster } from "@/shared/components/ui/toaster"
 import { router } from "./providers/router-provider"
 import StoreProvider from "./providers/store-provider"
 import { ThemeProvider } from "./providers/theme-provider"
@@ -8,6 +9,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <StoreProvider>
+        <Toaster />
         <RouterProvider router={router} />
       </StoreProvider>
     </ThemeProvider>
