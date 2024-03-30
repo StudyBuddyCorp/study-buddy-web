@@ -16,8 +16,8 @@ const ProfilePage = () => {
     }, [])
 
     const handleSignOut = async () => {
+        navigate('/auth')
         await logout()
-            .then(() => navigate('/auth'))
     }
 
     return (
@@ -30,8 +30,8 @@ const ProfilePage = () => {
                     </div>
                     <div className="font-semibold rounded-md shadow-md p-4 bg-card">
                         <ul>
-                            {user.email && <li className="flex gap-x-4 items-center">Почта: <p className="underline-offset-4 underline text-sky-400">{user.email}</p></li>}
-                            {user.phone && <li className="flex gap-x-4 items-center">Телефон: <p className="underline-offset-4 underline text-sky-400">{user.phone}</p></li>}
+                            {user.email && <li className="flex gap-x-4 items-center">Почта: <p className="underline-offset-4 underline text-accent">{user.email}</p></li>}
+                            {user.phone && <li className="flex gap-x-4 items-center">Телефон: <p className="underline-offset-4 underline text-accent">{user.phone}</p></li>}
                         </ul>
                     </div>
                     <div className="w-full flex flex-col gap-y-2">

@@ -77,6 +77,8 @@ export const authSlice = createSlice({
         state.user = null;
         state.isAuthenticated = false;
         state.isLoading = false;
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
       })
       .addMatcher(userAPI.endpoints.registration.matchPending, (state) => {
         state.isLoading = true;

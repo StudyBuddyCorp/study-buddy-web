@@ -11,7 +11,7 @@ const Layout = () => {
     useAuth()
     const location = useLocation()
     const outlet = useOutlet()
-
+ 
     return (
         <>
             <Header />
