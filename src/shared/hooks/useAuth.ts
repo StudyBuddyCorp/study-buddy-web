@@ -15,7 +15,7 @@ export const useAuth = () => {
     useEffect(() => {
         dispatch(handleLoadLocal());
 
-        if (!token) {
+        if (!localStorage.getItem('token')) {
             navigate("/auth");
             toast({
               title: 'Нет доступа',
