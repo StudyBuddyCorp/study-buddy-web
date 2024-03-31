@@ -16,6 +16,7 @@ export const useAuth = () => {
         dispatch(handleLoadLocal());
 
         if (!localStorage.getItem('token')) {
+            
             navigate("/auth");
             toast({
               title: 'Нет доступа',
