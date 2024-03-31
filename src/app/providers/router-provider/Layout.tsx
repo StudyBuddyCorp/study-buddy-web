@@ -16,7 +16,7 @@ const Layout = () => {
         <>
             <Header />
             <Suspense fallback={<LoadingRoute />}>
-                <main className="mx-auto w-full max-w-7xl py-8 flex flex-col gap-y-8 flex-grow">
+                <main className="mx-auto w-full h-full max-w-7xl py-8 flex flex-col gap-y-8 flex-grow">
                     <SwitchTransition>
                         <CSSTransition
                             key={location.pathname}
@@ -25,7 +25,7 @@ const Layout = () => {
                             unmountOnExit
                         >
                             {() => (
-                                <div>
+                                <div className="w-full h-full">
                                     {outlet}
                                 </div>
                             )}
