@@ -3,8 +3,10 @@ import {
     NavigationMenu,
     NavigationMenuContent,
     NavigationMenuItem,
+    NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
 } from "@/shared/components/ui/navigation-menu"
 import { Link } from "react-router-dom";
 
@@ -13,6 +15,11 @@ const AdminNavigation = () => {
     return (
         <NavigationMenu>
             <NavigationMenuList >
+                <NavigationMenuItem>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        <Link to='/admin/course'>Курсы</Link>
+                    </NavigationMenuLink>
+                </NavigationMenuItem>
                 <NavigationMenuItem >
                     <NavigationMenuTrigger >Курсы</NavigationMenuTrigger>
                     <NavigationMenuContent className="flex flex-col">

@@ -14,18 +14,12 @@ const links: Link[] = [
         children: 'Главная'
     },
     {
-        // link: '/brs',
-        link: 'https://www.cs.vsu.ru/brs/',
+        link: '/brs',
         children: 'БРС'
     },
     {
-        // link: '/schedule',
-        link: 'https://docs.google.com/spreadsheets/d/1m4HH52gVDSUVnyWH0GjPQsSC9xOdO2vmuz66cMDFqrc/edit#gid=2090530136',
+        link: '/schedule',
         children: 'Расписание'
-    },
-    {
-        link: '/settings',
-        children: 'Настройки'
     },
     {
         link: '/profile',

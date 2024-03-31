@@ -48,7 +48,7 @@ const UserTable = () => {
     return (
         <>
             <div className="flex gap-x-4">
-                <Input onChange={handleInputChange} />
+                <Input placeholder="Найти" onChange={handleInputChange} />
                 <Select onValueChange={value => setDepartment(value)}>
                     <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Факультет" />
