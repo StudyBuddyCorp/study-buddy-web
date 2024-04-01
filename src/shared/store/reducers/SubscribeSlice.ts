@@ -1,14 +1,14 @@
+import { Course } from "@/entities/course/ICourse";
 import { createSlice } from "@reduxjs/toolkit";
-import { Course } from "@/entities/course";
 
-type SubscribeState = {
+type CourseState = {
     course: Course | null;
 };
 
-const initialState: SubscribeState = {
+const initialState: CourseState = {
     course: null,
 };
-export const subscribeSlice = createSlice({
+export const courseSlice = createSlice({
     name: "subscribe",
     initialState,
     reducers: {
@@ -17,4 +17,4 @@ export const subscribeSlice = createSlice({
         },
     },
 });
-export const subscribeReducer = subscribeSlice.reducer;
+export const courseReducer = courseSlice.reducer;

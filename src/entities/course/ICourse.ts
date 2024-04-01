@@ -6,6 +6,8 @@ export interface Course {
     description: string,
     imageUrl: string,
 
+    createdAt: Date
+
     students: IUser[],
     teachers: IUser[],
 }

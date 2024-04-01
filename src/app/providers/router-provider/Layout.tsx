@@ -12,30 +12,32 @@ const Layout = () => {
     useAuth()
     const location = useLocation()
     const outlet = useOutlet()
- 
+
     return (
-        <div className="h-dvh flex flex-col">
+        <>
             <Header />
-            {location.pathname.includes('admin') && <AdminSidebar/>}
-            <Suspense fallback={<LoadingRoute />}>
-                <main className="mx-auto w-full h-full max-w-7xl py-8 flex flex-col gap-y-8 flex-grow">
-                    <SwitchTransition>
-                        <CSSTransition
-                            key={location.pathname}
-                            timeout={300}
-                            classNames={'page'}
-                            unmountOnExit
-                        >
-                            {() => (
-                                <div className="w-full h-full">
-                                    {outlet}
-                                </div>
-                            )}
-                        </CSSTransition>
-                    </SwitchTransition>
-                </main>
-            </Suspense>
-        </div>
+            {location.pathname.includes('admin') && <AdminSidebar />}
+            <div className="h-dvh flex flex-col">
+                <Suspense fallback={<LoadingRoute />}>
+                    <main className="mx-auto w-full pt-20 pb-4 h-full flex flex-col gap-y-8 flex-grow">
+                        <SwitchTransition>
+                            <CSSTransition
+                                key={location.pathname}
+                                timeout={300}
+                                classNames={'page'}
+                                unmountOnExit
+                            >
+                                {() => (
+                                    <div className="w-full h-full">
+                                        {outlet}
+                                    </div>
+                                )}
+                            </CSSTransition>
+                        </SwitchTransition>
+                    </main>
+                </Suspense>
+            </div>
+        </>
     )
 }
 

@@ -2,6 +2,7 @@ import { Book, School, Users } from "lucide-react";
 import AdminSidebarItem from "./AdminSidebarItem";
 import { useRef, useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { cn } from "@/shared/lib/utils";
 
 const AdminSidebar = () => {
 
@@ -26,7 +27,7 @@ const AdminSidebar = () => {
                 classNames='courses'
                 nodeRef={nodeRef}
             >
-                <button ref={nodeRef} onMouseLeave={handleClose} onMouseEnter={handleOpen} className="bg-card p-4 absolute top-[54px] left-0 overflow-hidden h-full flex">
+                <button ref={nodeRef} onMouseLeave={handleClose} onMouseEnter={handleOpen} className={cn("bg-card p-4 absolute top-0 pt-16 z-10 left-0 overflow-hidden h-dvh flex", isOpen && "bg-card/75 backdrop-blur-sm")}>
                     <nav ref={nodeRef}>
                         <ul ref={nodeRef} className="flex flex-col gap-y-4" >
                             <AdminSidebarItem ref={nodeRef} to='/admin/course'><School />{isOpen ? 'Курсы' : ''}</AdminSidebarItem>

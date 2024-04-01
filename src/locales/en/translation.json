@@ -17,6 +17,18 @@
                 "header": "Not found",
                 "body": "Courses are not found"
             }
+        },
+        "course-details": {
+            "header": "Course:",
+            "course-info": "Course info",
+            "updated-at": "Last update",
+            "created-at": "Created at",
+            "students": "Students",
+            "groups": "Groups",
+            "edit": "Edit",
+            "delete": "Delete",
+            "select": "Select a course",
+            "year": "y."
         }
     },
     "student": {

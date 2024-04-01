@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/shared/store"
-import { subscribeSlice } from "@/shared/store/reducers/SubscribeSlice"
+import { courseSlice } from "@/shared/store/reducers/SubscribeSlice"
 import UserTable from "@/widgets/user/UserTable"
 import { HeartCrack } from "lucide-react"
 import CourseCard from "../course/CourseCard"
@@ -10,7 +10,7 @@ const SelectSubscriber = () => {
 
     const { course } = useAppSelector(state => state.subscribeReducer)
     const dispatch = useAppDispatch()
-    const { setCourse } = subscribeSlice.actions
+    const { setCourse } = courseSlice.actions
 
     if (course) {
         return (

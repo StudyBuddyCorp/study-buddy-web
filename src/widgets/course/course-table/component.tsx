@@ -1,6 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/components/ui/table";
 import { useAppDispatch } from "@/shared/store";
-import { subscribeSlice } from "@/shared/store/reducers/SubscribeSlice";
+import { courseSlice } from "@/shared/store/reducers/SubscribeSlice";
 import { useGetCoursesQuery } from "@/shared/store/services/CourseService";
 import { CourseTableSkeleton } from ".";
 import { useTranslation } from "react-i18next";
@@ -12,7 +12,7 @@ const CoursesTable = () => {
 
     const { t } = useTranslation()
     const { data: courses, isLoading } = useGetCoursesQuery()
-    const { setCourse } = subscribeSlice.actions
+    const { setCourse } = courseSlice.actions
     const dispatch = useAppDispatch()
 
     if (isLoading) {
@@ -28,7 +28,7 @@ const CoursesTable = () => {
         )
     }
     return (
-        <Table className="bg-card rounded-md shadow-lg">
+        <Table className="bg-card rounded-2xl shadow-lg">
             <TableHeader>
                 <TableHead>{t('course.table.title')}</TableHead>
                 <TableHead>{t('course.table.description')}</TableHead>
