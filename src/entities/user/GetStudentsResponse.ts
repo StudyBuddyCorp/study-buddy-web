@@ -1,4 +1,4 @@
-import { Response } from "../api/Response";
+import { Response } from "../../shared/lib/response";
 
 export interface UserDto {
     departmentTitle: string;

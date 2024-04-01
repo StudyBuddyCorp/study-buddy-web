@@ -1,5 +1,5 @@
-import { CreateCourseRequest } from "@/entities/course/CreateCourseRequest";
-import { CreateCourseResponse } from "@/entities/course/CreateCourseResponse";
+import { CreateCourseRequest } from "@/entities/course/request/";
+import { CreateCourseResponse } from "@/entities/course/response";
 import { Course } from "@/entities/course/ICourse";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
@@ -11,7 +11,7 @@ export const courseAPI = createApi({
     endpoints: (build) => ({
         createCourse: build.mutation<CreateCourseResponse, CreateCourseRequest>(
             {
-                query: (request: CreateCourseRequest) => ({
+                query: (request) => ({
                     url: "/courses/create",
                     method: "POST",
                     credentials: "include",

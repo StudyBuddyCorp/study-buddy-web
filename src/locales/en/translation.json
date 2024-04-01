@@ -13,6 +13,7 @@
         "table": {
             "title": "Title",
             "description": "Description",
+            "students-count": "Students",
             "error": {
                 "header": "Not found",
                 "body": "Courses are not found"
@@ -27,8 +28,7 @@
             "groups": "Groups",
             "edit": "Edit",
             "delete": "Delete",
-            "select": "Select a course",
-            "year": "y."
+            "select": "Select a course"
         }
     },
     "student": {

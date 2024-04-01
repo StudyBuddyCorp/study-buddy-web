@@ -33,7 +33,7 @@ const CourseCreateForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-4 bg-card py-4 px-8 shadow-lg rounded-2xl w-full sm:max-w-md">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-4 bg-card py-4 px-8 shadow-lg rounded-2xl w-full min-w-fit">
                 <h3>{t('course.create-form.header')}</h3>
                 <FormField control={form.control} name="title"
                     render={({ field }) => (

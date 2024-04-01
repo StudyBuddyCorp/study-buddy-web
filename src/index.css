@@ -89,7 +89,7 @@
     @apply scroll-m-20 text-lg font-bold tracking-tight
   }
   h6 {
-    @apply scroll-m-20 text-lg font-semibold tracking-tight
+    @apply scroll-m-20 font-light tracking-tight
   }
   p {
     @apply leading-7 [&:not(:first-child)]:mt-4

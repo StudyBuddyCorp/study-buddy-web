@@ -1,4 +1,4 @@
-import { GetDepartmentsResponse } from "@/entities/department/GetDepartmentsResponse";
+import { GetDepartmentsResponse } from "@/entities/department/response";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 

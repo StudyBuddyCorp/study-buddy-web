@@ -7,9 +7,9 @@ import { CourseTableLazy } from "@/widgets/course/course-table";
 const AdminCourse = () => {
 
     return (
-        <div className="w-full h-full px-8 flex gap-x-4 justify-between">
+        <div className="w-full h-full px-8 flex lg:flex-row flex-col gap-4 justify-between">
             <div className="flex flex-col w-full h-full gap-y-8">
-                <div className="flex w-full gap-4">
+                <div className="flex xl:flex-row flex-col w-full h-full max-h-96 gap-4">
                     <CourseCreateFormLazy />
                     <CourseCountCardLazy />
                     <StudentCountCardLazy />
