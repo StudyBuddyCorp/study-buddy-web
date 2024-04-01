@@ -1,0 +1,18 @@
+{
+    "course": {
+        "count-card": {
+            "header": "Total courses"
+        },
+        "create-form": {
+            "header": "Create",
+            "title": "Title",
+            "description": "Description",
+            "save": "Save"
+        }
+    },
+    "student": {
+        "count-card": {
+            "header": "Total students"
+        }
+    }
+}

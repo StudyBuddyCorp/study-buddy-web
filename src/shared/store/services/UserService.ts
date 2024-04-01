@@ -8,6 +8,7 @@ import {
     GetStudentsResponse,
     UserDto,
 } from "@/entities/user/GetStudentsResponse";
+import { Role } from "@/entities/user/IUser";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -81,7 +82,20 @@ export const userAPI = createApi({
                 res._embedded?.userDtoes ?? [],
             providesTags: () => ["students"],
         }),
+        count: build.query<number, UserCountRequest>({
+            query: (params) => ({
+                url: "/users/count",
+                credentials: "include",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                params,
+            }),
+        }),
     }),
 });
 
-export const { useGetStudentsQuery } = userAPI;
+export const { useGetStudentsQuery, useCountQuery } = userAPI;
+interface UserCountRequest {
+    role: Role
+}

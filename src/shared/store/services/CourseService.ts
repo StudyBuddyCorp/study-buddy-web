@@ -35,7 +35,16 @@ export const courseAPI = createApi({
             }),
             providesTags: () => ["courses"],
         }),
+        count: build.query<number, void>({
+            query: () => ({
+                url: "/courses/count",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                credentials: "include",
+            }),
+        }),
     }),
 });
 
-export const { useCreateCourseMutation, useGetCoursesQuery } = courseAPI;
+export const { useCreateCourseMutation, useGetCoursesQuery, useCountQuery } = courseAPI;

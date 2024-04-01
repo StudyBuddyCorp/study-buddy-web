@@ -1,0 +1,18 @@
+{
+    "course": {
+        "count-card": {
+            "header": "Всего курсов"
+        },
+        "create-form": {
+            "header": "Создать",
+            "title": "Название",
+            "description": "Описание",
+            "save": "Сохранить"
+        }
+    },
+    "student": {
+        "count-card": {
+            "header": "Total students"
+        }
+    }
+}

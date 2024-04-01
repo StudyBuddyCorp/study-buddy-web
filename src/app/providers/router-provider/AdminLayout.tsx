@@ -1,5 +1,5 @@
 import { Role } from "@/entities/user/IUser";
-import AdminNavigation from "@/widgets/header/AdminNavigation";
+// import AdminNavigation from "@/widgets/header/AdminNavigation";
 import { useAppSelector } from "@/shared/store";
 import { useOutlet } from "react-router-dom";
 
@@ -16,8 +16,8 @@ const AdminLayout = () => {
         )
     }
     return (
-        <div className="w-full flex flex-col gap-y-4 justify-center items-center pt-8">
-            <AdminNavigation />
+        <div className="w-full flex flex-col gap-y-4 justify-center items-center">
+            {/* <AdminNavigation /> */}
             {outlet}
         </div>
     )

@@ -8,9 +8,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "./formSchema";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
-const CreateCourseForm = () => {
+const CourseCreateForm = () => {
 
+    const { t } = useTranslation()
     const [create, { isLoading }] = courseAPI.useCreateCourseMutation()
 
     useEffect(() => {
@@ -31,13 +33,13 @@ const CreateCourseForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-4 bg-card py-4 px-8 shadow-md rounded-md w-full sm:max-w-md">
-                <h4>Создание курса</h4>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-y-4 bg-card py-4 px-8 shadow-lg rounded-2xl w-full sm:max-w-md">
+                <h3>{t('course.create-form.header')}</h3>
                 <FormField control={form.control} name="title"
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
-                                <Input disabled={isLoading} autoComplete="title" placeholder="Название курса" {...field} />
+                                <Input disabled={isLoading} autoComplete="title" placeholder={t('course.create-form.title')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -47,18 +49,18 @@ const CreateCourseForm = () => {
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
-                                <Input autoComplete="description" disabled={isLoading} placeholder="Описание курса" {...field} />
+                                <Input autoComplete="description" disabled={isLoading} placeholder={t('course.create-form.description')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                 <div className="flex flex-col gap-y-2">
-                    <SpinnerButton disabled={isLoading}>Создать курса</SpinnerButton>
+                    <SpinnerButton disabled={isLoading}>{t('course.create-form.save')}</SpinnerButton>
                 </div>
             </form>
         </Form>
     )
 }
 
-export default CreateCourseForm;
+export default CourseCreateForm;
