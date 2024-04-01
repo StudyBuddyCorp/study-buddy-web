@@ -4,15 +4,14 @@ import { lazy } from "react";
 import Layout from "./Layout";
 import ErrorPage from "@/pages/error";
 import AdminLayout from "./AdminLayout";
-import AdminCourse from "@/pages/admin/course";
 import BrsPage from "@/pages/brs";
 import Schedule from "@/pages/schedule";
 
+const AdminCourse = lazy(() => import("@/pages/admin/course"));
 const AuthPage = lazy(() => import("@/pages/auth"));
 const DashboardPage = lazy(() => import("@/pages/dashboard"));
 const ProfilePage = lazy(() => import("@/pages/profile"));
 const AdminPage = lazy(() => import("@/pages/admin"));
-const CreateCoursePage = lazy(() => import("@/pages/admin/create/course/page"));
 const CreateUserPage = lazy(() => import("@/pages/admin/create/user/page"));
 const SubscribeToCoursePage = lazy(() => import("@/pages/admin/subscribe/page"));
 
@@ -47,16 +46,13 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: '/admin/course',
-                        element: <AdminCourse/>
+                        element: <AdminCourse />
                     },
                     {
                         index: true,
                         element: <AdminPage />
                     },
                     {
-                        path: '/admin/create/course',
-                        element: <CreateCoursePage />
-                    }, {
                         path: '/admin/create/user',
                         element: <CreateUserPage />
                     },

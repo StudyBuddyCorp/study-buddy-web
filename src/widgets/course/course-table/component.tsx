@@ -2,33 +2,39 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useAppDispatch } from "@/shared/store";
 import { subscribeSlice } from "@/shared/store/reducers/SubscribeSlice";
 import { useGetCoursesQuery } from "@/shared/store/services/CourseService";
-import { Loader2 } from "lucide-react";
+import { CourseTableSkeleton } from ".";
+import { useTranslation } from "react-i18next";
+import { Card } from "@/shared/components/ui/card";
 
 
 
 const CoursesTable = () => {
 
+    const { t } = useTranslation()
     const { data: courses, isLoading } = useGetCoursesQuery()
     const { setCourse } = subscribeSlice.actions
     const dispatch = useAppDispatch()
 
     if (isLoading) {
-        return (
-            <div className="w-full flex justify-center items-center">
-                <Loader2 className="animate-spin" />
-            </div>
-        )
+        return <CourseTableSkeleton />
     }
 
-
+    if(!courses) {
+        return (
+            <Card className="w-full h-full flex justify-center items-center flex-col gap-y-4">
+                <h2>{t('course.table.error.header')}</h2>
+                <h4>{t('course.table.error.body')}</h4>
+            </Card>
+        )
+    }
     return (
-        <Table className="bg-card shadow-sm rounded-md">
+        <Table className="bg-card rounded-md shadow-lg">
             <TableHeader>
-                <TableHead>Название</TableHead>
-                <TableHead>Описание</TableHead>
+                <TableHead>{t('course.table.title')}</TableHead>
+                <TableHead>{t('course.table.description')}</TableHead>
             </TableHeader>
             <TableBody>
-                {courses?.map(course =>
+                {courses.map(course =>
                     <TableRow onClick={() => dispatch(setCourse(course))} className="cursor-pointer" key={course.id}>
                         <TableCell className="font-semibold">{course.title}</TableCell>
                         <TableCell>{course.description}</TableCell>

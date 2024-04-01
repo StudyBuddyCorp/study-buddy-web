@@ -8,23 +8,20 @@ import { useTranslation } from "react-i18next";
 const CourseCountCard = () => {
 
 
-    const { t, i18n } = useTranslation()
-    const { data } = useCountQuery()
+    const { t } = useTranslation()
+    const { data, isLoading } = useCountQuery()
 
-    if (!data) {
+    if (isLoading) {
         return <CourseCountCardSkeleton />
-    }
-    const onClick = () => {
-        i18n.changeLanguage('en-US')
     }
 
     return (
-        <Card onClick={onClick} className="w-full sm:max-w-sm">
+        <Card className="w-full sm:max-w-sm">
             <CardHeader>
                 <h4>{t('course.count-card.header')}</h4>
             </CardHeader>
             <CardContent className="flex-col gap-0 flex justify-center items-center w-full p-8">
-                <h1 className="text-7xl">{data}</h1>
+                <h1 className="text-7xl">{data ?? t('course.count-card.error')}</h1>
             </CardContent>
         </Card>
     )

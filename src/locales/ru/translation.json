@@ -1,18 +1,28 @@
 {
     "course": {
         "count-card": {
-            "header": "Всего курсов"
+            "header": "Всего курсов",
+            "error": "Не найдено"
         },
         "create-form": {
             "header": "Создать",
             "title": "Название",
             "description": "Описание",
             "save": "Сохранить"
+        },
+        "table": {
+            "title": "Название",
+            "description": "Описание",
+            "error": {
+                "header": "Не найдено",
+                "body": "Курсы не найдены"
+            }
         }
     },
     "student": {
         "count-card": {
-            "header": "Total students"
+            "header": "Всего студентов",
+            "error": "Не найдено"
         }
     }
 }

@@ -16,7 +16,7 @@ const AdminLayout = () => {
         )
     }
     return (
-        <div className="w-full flex flex-col gap-y-4 justify-center items-center">
+        <div className="w-full h-full flex flex-col gap-y-4 justify-center items-center">
             {/* <AdminNavigation /> */}
             {outlet}
         </div>

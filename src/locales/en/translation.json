@@ -1,18 +1,28 @@
 {
     "course": {
         "count-card": {
-            "header": "Total courses"
+            "header": "Total courses",
+            "error": "Not found"
         },
         "create-form": {
             "header": "Create",
             "title": "Title",
             "description": "Description",
             "save": "Save"
+        },
+        "table": {
+            "title": "Title",
+            "description": "Description",
+            "error": {
+                "header": "Not found",
+                "body": "Courses are not found"
+            }
         }
     },
     "student": {
         "count-card": {
-            "header": "Total students"
+            "header": "Total students",
+            "error": "Not found"
         }
     }
 }
