@@ -6,6 +6,7 @@ import { gd } from "@/shared/lib/utils";
 import { X } from "lucide-react";
 import { courseSlice } from "@/shared/store/reducers/CourseSlice";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { CourseDeleteDialogLazy } from "@/features/course/course-delete-dialog";
 const CourseDetails = () => {
 
     const { t } = useTranslation()
@@ -52,7 +53,7 @@ const CourseDetails = () => {
                                 <h6>{t('course.course-details.groups')}:</h6>
                                 <Button onClick={handleEditClick} variant='secondary'>{t('course.course-details.edit')}</Button>
                                 <Button onClick={handleEditClick} variant='secondary'>{t('course.course-details.subscribe')}</Button>
-                                <Button variant='destructive'>{t('course.course-details.delete')}</Button>
+                                <CourseDeleteDialogLazy/>
                             </CardContent>
                         </>
                         :

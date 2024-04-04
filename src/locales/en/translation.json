@@ -31,7 +31,12 @@
             "groups": "Groups",
             "edit": "Edit",
             "subscribe": "Subscribe",
-            "delete": "Delete",
+            "delete-dialog": {
+                "trigger": "Delete",
+                "title": "Are you sure?",
+                "description": "Once deleted, it will not be possible to reverse this action. The data has been permanently removed from our servers.",
+                "button": "Delete forever"
+            } ,
             "select": "Select a course"
         }
     },

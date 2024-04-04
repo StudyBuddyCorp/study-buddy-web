@@ -1,5 +1,6 @@
 import { Course } from "@/entities/course/ICourse";
 import { createSlice } from "@reduxjs/toolkit";
+import { courseAPI } from "../services/CourseService";
 
 type CourseState = {
     course: Course | null;
@@ -21,5 +22,13 @@ export const courseSlice = createSlice({
             state.isEdited = !state.isEdited;
         },
     },
+    extraReducers: (builder) =>
+        builder.addMatcher(
+            courseAPI.endpoints.delete.matchFulfilled,
+            (state) => {
+                state.course = null;
+                state.isEdited = false;
+            },
+        ),
 });
 export const courseReducer = courseSlice.reducer;
