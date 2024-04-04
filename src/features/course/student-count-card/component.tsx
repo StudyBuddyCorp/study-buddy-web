@@ -19,14 +19,13 @@ const StudentCountCard = () => {
             <CardHeader>
                 <h4>{t('student.count-card.header')}</h4>
             </CardHeader>
-            <CardContent className="flex-col gap-0 flex justify-center items-center w-full p-8">
+            <CardContent className="flex-col h-1/2 gap-0 flex justify-center items-center w-full p-8">
                 {data ?
-                    <h1 className="text-7xl">{data}</h1>
+                    <h1 className="text-8xl">{data}</h1>
 
                     : <div className="flex justify-center items-center flex-col gap-y-2">
                         <CircleAlert className="text-destructive"/>
                         <h6 >{t('student.count-card.error')}</h6>
-
                     </div>
                 }
             </CardContent>

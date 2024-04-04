@@ -3,10 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type CourseState = {
     course: Course | null;
+    isEdited: boolean;
 };
 
 const initialState: CourseState = {
     course: null,
+    isEdited: false,
 };
 export const courseSlice = createSlice({
     name: "subscribe",
@@ -14,6 +16,9 @@ export const courseSlice = createSlice({
     reducers: {
         setCourse(state, { payload }: { payload: Course | null }) {
             state.course = payload;
+        },
+        switchEdited(state) {
+            state.isEdited = !state.isEdited;
         },
     },
 });

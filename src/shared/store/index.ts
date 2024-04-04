@@ -6,11 +6,11 @@ import { courseAPI } from "./services/CourseService";
 import { specialtyAPI } from "./services/SpecialtyService";
 import { departmentAPI } from "./services/DepartmentService";
 import { groupAPI } from "./services/GroupService";
-import { courseReducer } from "./reducers/SubscribeSlice";
+import { courseReducer } from "./reducers/CourseSlice";
 
 export const rootReducer = combineReducers({
     authReducer,
-    subscribeReducer: courseReducer,
+    courseReducer: courseReducer,
     [userAPI.reducerPath]: userAPI.reducer,
     [courseAPI.reducerPath]: courseAPI.reducer,
     [specialtyAPI.reducerPath]: specialtyAPI.reducer,

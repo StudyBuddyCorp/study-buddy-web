@@ -11,6 +11,9 @@
             "save": "Save"
         },
         "table": {
+            "header": "Course",
+            "input": "Search...",
+            "filter": "Filter",
             "title": "Title",
             "description": "Description",
             "students-count": "Students",
@@ -20,13 +23,14 @@
             }
         },
         "course-details": {
-            "header": "Course:",
             "course-info": "Course info",
+            "description": "Description",
             "updated-at": "Last update",
             "created-at": "Created at",
             "students": "Students",
             "groups": "Groups",
             "edit": "Edit",
+            "subscribe": "Subscribe",
             "delete": "Delete",
             "select": "Select a course"
         }
@@ -35,6 +39,24 @@
         "count-card": {
             "header": "Total students",
             "error": "Not found"
+        },
+        "subscribe-card": {
+            "header": "Subscribe",
+            "form": {
+                "select-student": {
+                    "label": "Student",
+                    "default-value": "Select student",
+                    "empty-value": "No students found",
+                    "search": "Search student"
+                },
+                "select-course": {
+                    "label": "Course",
+                    "default-value": "Select course",
+                    "empty-value": "No courses found",
+                    "search": "Search course"
+                },
+                "button": "Subscribe"
+            }
         }
     }
 }

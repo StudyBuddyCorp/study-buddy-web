@@ -1,4 +1,4 @@
-import { IUser } from "../../user/IUser";
+import { User } from "../../user/IUser";
 
 export interface CreateCourseResponse extends Response {
   id: string;
@@ -6,6 +6,6 @@ export interface CreateCourseResponse extends Response {
   description: string;
   imageUrl: string;
 
-  students: IUser[];
-  teachers: IUser[];
+  students: User[];
+  teachers: User[];
 }

@@ -6,7 +6,7 @@ import CourseGrid from "./CourseGrid";
 
 const CoursesBlock = () => {
 
-    const { data: courses } = useGetCoursesQuery()
+    const { data: courses } = useGetCoursesQuery({})
     const [listType, setListType] = useState<'GRID' | 'LIST'>('LIST')
 
 

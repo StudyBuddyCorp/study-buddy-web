@@ -11,6 +11,9 @@
             "save": "Сохранить"
         },
         "table": {
+            "header": "Курсы",
+            "input": "Найти...",
+            "filter": "Фильтр",
             "title": "Название",
             "description": "Описание",
             "students-count": "Студентов",
@@ -22,11 +25,13 @@
         "course-details": {
             "header": "Курс:",
             "course-info": "Информация о курсе",
+            "description": "Описание",
             "updated-at": "Последнее обновление",
             "created-at": "Создан",
             "students": "Студенты",
             "groups": "Группы",
             "edit": "Редактировать",
+            "subscribe": "Подписать",
             "delete": "Удалить",
             "select": "Выберите курс"
         }
@@ -35,6 +40,24 @@
         "count-card": {
             "header": "Всего студентов",
             "error": "Не найдено"
+        },
+        "subscribe-card": {
+            "header": "Подписать",
+            "form": {
+                "select-student": {
+                    "label": "Студент",
+                    "default-value": "Выберите студента",
+                    "empty-value": "Студенты не найдены",
+                    "search": "Найти студента..."
+                },
+                "select-course": {
+                    "label": "Курс",
+                    "default-value": "Выберите курс",
+                    "empty-value": "Курсы не найдены",
+                    "search": "Найти курс..."
+                },
+                "button": "Подписать"
+            }
         }
     }
 }

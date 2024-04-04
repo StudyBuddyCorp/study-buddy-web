@@ -6,13 +6,14 @@ import ErrorPage from "@/pages/error";
 import AdminLayout from "./AdminLayout";
 import BrsPage from "@/pages/brs";
 import Schedule from "@/pages/schedule";
+import AdminTeachers from "@/pages/admin/teachers/page";
 
 const AdminCourse = lazy(() => import("@/pages/admin/course"));
 const AuthPage = lazy(() => import("@/pages/auth"));
-const DashboardPage = lazy(() => import("@/pages/dashboard"));
+const DashboardPage = lazy(() => import("@/pages/home"));
 const ProfilePage = lazy(() => import("@/pages/profile"));
 const AdminPage = lazy(() => import("@/pages/admin"));
-const CreateUserPage = lazy(() => import("@/pages/admin/create/user/page"));
+const CreateUserPage = lazy(() => import("@/pages/admin/students/page"));
 const SubscribeToCoursePage = lazy(() => import("@/pages/admin/subscribe/page"));
 
 export const router = createBrowserRouter([
@@ -45,12 +46,16 @@ export const router = createBrowserRouter([
                 element: <AdminLayout />,
                 children: [
                     {
+                        index: true,
+                        element: <AdminPage />
+                    },
+                    {
                         path: '/admin/course',
                         element: <AdminCourse />
                     },
                     {
-                        index: true,
-                        element: <AdminPage />
+                        path: '/admin/teachers',
+                        element: <AdminTeachers />
                     },
                     {
                         path: '/admin/create/user',

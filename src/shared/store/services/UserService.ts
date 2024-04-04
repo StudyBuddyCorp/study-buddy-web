@@ -1,16 +1,21 @@
-import { AuthenticationResponse } from "@/entities/auth/AuthenticationResponse";
-import { LoginRequest } from "@/entities/auth/LoginRequest";
-import { RegistrationRequest } from "@/entities/auth/RegistrationRequest";
-import { CreateUserRequest } from "@/entities/user/CreateUserReques";
-import { CreateUserResponse } from "@/entities/user/CreateUserResponse";
-import { GetStudentsRequest } from "@/entities/user/GetStudentsRequest";
 import {
+    AuthenticationResponse,
+    LoginRequest,
+    RegistrationRequest,
+} from "@/entities/auth";
+import { User } from "@/entities/user";
+import {
+    CreateUserResponse,
     GetStudentsResponse,
-    UserDto,
-} from "@/entities/user/GetStudentsResponse";
-import { Role } from "@/entities/user/IUser";
+} from "@/entities/user/response";
+import {
+    CreateUserRequest,
+    GetStudentsRequest as GetUsersRequest,
+    UserCountRequest,
+} from "@/entities/user/request";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Role } from "@/entities/user/IUser";
 
 export const userAPI = createApi({
     reducerPath: "userAPI",
@@ -58,20 +63,20 @@ export const userAPI = createApi({
             providesTags: () => ["user"],
         }),
         createStudent: build.mutation<CreateUserResponse, CreateUserRequest>({
-            query: (request: CreateUserRequest) => ({
-                url: "/users/create",
+            query: (request) => ({
+                url: "/users",
                 method: "POST",
                 credentials: "include",
-                body: request,
+                body: { ...request, role: Role.STUDENT },
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             }),
             invalidatesTags: ["students"],
         }),
-        getStudents: build.query<UserDto[], GetStudentsRequest>({
-            query: (params: GetStudentsRequest) => ({
-                url: "/users/get-students",
+        getUsers: build.query<User[], GetUsersRequest>({
+            query: (params) => ({
+                url: "/users",
                 credentials: "include",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -95,7 +100,5 @@ export const userAPI = createApi({
     }),
 });
 
-export const { useGetStudentsQuery, useCountQuery } = userAPI;
-interface UserCountRequest {
-    role: Role
-}
+export const { useCreateStudentMutation, useGetUsersQuery, useCountQuery } =
+    userAPI;

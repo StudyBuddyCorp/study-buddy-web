@@ -1,5 +1,5 @@
-import { IUser } from "./IUser";
+import { User } from "../IUser";
 
 export interface CreateUserResponse extends Response {
-    user: IUser
+    user: User
 }

@@ -1,3 +1,4 @@
+import { Role } from "@/entities/user/IUser"
 import { Input } from "@/shared/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/components/ui/table"
@@ -5,7 +6,7 @@ import { useDebounce } from "@/shared/hooks/useDebounce"
 import { useGetDepartmentQuery } from "@/shared/store/services/DepartmentService"
 import { useGetGroupsQuery } from "@/shared/store/services/GroupService"
 import { useGetSpecialtyQuery } from "@/shared/store/services/SpecialtyService"
-import { useGetStudentsQuery } from "@/shared/store/services/UserService"
+import { useGetUsersQuery } from "@/shared/store/services/UserService"
 import { Loader2 } from "lucide-react"
 import { useState, useEffect } from "react"
 
@@ -20,7 +21,7 @@ const UserTable = () => {
     const { data: departments } = useGetDepartmentQuery()
     const { data: specialties, refetch: refetchSpecialties } = useGetSpecialtyQuery(department)
     const { data: groups, refetch: refetchGroups } = useGetGroupsQuery({ department, specialty })
-    const { data: students, isLoading, isFetching } = useGetStudentsQuery({ name: debouncedSearch, department, specialty, groupId })
+    const { data: students, isLoading, isFetching } = useGetUsersQuery({ role: Role.STUDENT, name: debouncedSearch, department, specialty, groupId })
 
     useEffect(() => {
         setSpecialty('')
@@ -88,7 +89,7 @@ const UserTable = () => {
                             <TableCell className="font-semibold">{student.name}</TableCell>
                             <TableCell>{student.email}</TableCell>
                             <TableCell>{student.departmentTitle}</TableCell>
-                            <TableCell>{student.specialtyTitle}</TableCell>
+                            <TableCell>{student.specialityTitle}</TableCell>
                             <TableCell>{student.groupNumber}</TableCell>
 
                         </TableRow>

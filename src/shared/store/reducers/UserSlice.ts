@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userAPI } from "../services/UserService";
-import { IUser } from "@/entities/user/IUser";
+import { User } from "@/entities/user";
 type AuthState = {
-  user: IUser | null;
+  user: User | null;
   token: string | null;
   isLoading: boolean;
   isAuthenticated: boolean;
@@ -21,7 +21,7 @@ export const authSlice = createSlice({
       const token = localStorage.getItem("token");
       const userString = localStorage.getItem("user");
       if (userString) {
-        const user: IUser = JSON.parse(userString);
+        const user: User = JSON.parse(userString);
         state.user = user;
         state.token = token;
         state.isAuthenticated = true;
