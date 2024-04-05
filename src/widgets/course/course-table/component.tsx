@@ -2,7 +2,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useAppDispatch, useAppSelector } from "@/shared/store";
 import { courseSlice } from "@/shared/store/reducers/CourseSlice";
 import { useGetCoursesQuery } from "@/shared/store/services/CourseService";
-import { CourseTableSkeleton } from ".";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader } from "@/shared/components/ui/card";
 import { CircleAlert, ListFilter } from "lucide-react";
@@ -12,6 +11,7 @@ import { SelectTrigger } from "@radix-ui/react-select";
 import { Input } from "@/shared/components/ui/input";
 import { useState } from "react";
 import { useDebounce } from "@/shared/hooks/useDebounce";
+import CardSkeleton from "@/shared/components/ui/card-skeleton";
 
 
 
@@ -26,7 +26,7 @@ const CoursesTable = () => {
     const dispatch = useAppDispatch()
 
     if (isLoading) {
-        return <CourseTableSkeleton />
+        return <CardSkeleton />
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +36,7 @@ const CoursesTable = () => {
     if (!courses) {
         return (
             <Card className="w-full h-full flex justify-center items-center flex-col gap-y-4">
+                {isLoading && <CardSkeleton />}
                 <CircleAlert className="text-destructive" />
                 <h2>{t('course.table.error.header')}</h2>
                 <h4>{t('course.table.error.body')}</h4>

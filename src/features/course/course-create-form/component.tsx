@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "./formSchema";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader } from "@/shared/components/ui/card";
+import { Textarea } from "@/shared/components/ui/textarea";
 
 const CourseCreateForm = () => {
 
@@ -28,7 +29,7 @@ const CourseCreateForm = () => {
     }
 
     return (
-        <Card className="w-full  min-w-fit">
+        <Card className="w-full">
             <CardHeader>
                 <h3>{t('course.create-form.header')}</h3>
             </CardHeader>
@@ -49,7 +50,7 @@ const CourseCreateForm = () => {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Input autoComplete="description" disabled={isLoading} placeholder={t('course.create-form.description')} {...field} />
+                                        <Textarea autoComplete="description" disabled={isLoading} placeholder={t('course.create-form.description')} {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

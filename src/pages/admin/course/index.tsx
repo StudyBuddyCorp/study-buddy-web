@@ -1,25 +1,47 @@
-import { CourseCountCardLazy } from "@/features/course/course-count-card";
-import { CourseCreateFormLazy } from "@/features/course/course-create-form";
-import { StudentCountCardLazy } from "@/features/course/student-count-card";
-import { SubscribeStudentCardLazy } from "@/features/course/subscribe-student-card";
-import { CourseDetailsLazy } from "@/widgets/course/course-details";
-import { CourseTableLazy } from "@/widgets/course/course-table";
+import CardLazy from "@/shared/components/ui/card-lazy";
+import { lazy, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
+const CourseCreateForm = lazy(() => import('@/features/course/course-create-form/component'))
+const CourseCountCardForm = lazy(() => import('@/features/course/course-count-card/component'))
+const StudentCountForm = lazy(() => import('@/features/course/student-count-card/component'))
+const SubscribeStudentForm = lazy(() => import('@/features/course/subscribe-student-card/component'))
+const CourseDetails = lazy(() => import('@/widgets/course/course-details/component'))
+const CourseTable = lazy(() => import('@/widgets/course/course-table/component'))
 
 const AdminCourse = () => {
+
+    const { t } = useTranslation()
+
+    useEffect(() => {
+        document.title = t('pages.admin.course')
+    }, [t])
 
     return (
         <div className="w-full h-full px-8 flex lg:flex-row flex-col gap-4 justify-between">
             <div className="flex flex-col w-full h-full gap-y-8">
                 <div className="flex 2xl:flex-row flex-col w-full h-full 2xl:max-h-96 gap-4">
-                    <CourseCreateFormLazy />
-                    <CourseCountCardLazy />
-                    <StudentCountCardLazy />
-                    <SubscribeStudentCardLazy />
+                    <CardLazy>
+                        <CourseCreateForm />
+                    </CardLazy>
+                    <CardLazy>
+                        <CourseCountCardForm />
+                    </CardLazy>
+                    <CardLazy>
+                        <StudentCountForm />
+                    </CardLazy>
+                    <CardLazy>
+                        <SubscribeStudentForm />
+                    </CardLazy>
                 </div>
-                <CourseTableLazy />
+                <CardLazy>
+                    <CourseTable />
+                </CardLazy>
             </div>
             <div className="h-full">
-                <CourseDetailsLazy />
+                <CardLazy>
+                    <CourseDetails />
+                </CardLazy>
             </div>
         </div>
     )

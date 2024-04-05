@@ -1,6 +1,11 @@
 import { Card, CardHeader, CardContent } from "@/shared/components/ui/card";
 import { useTranslation } from "react-i18next";
 import { SubscribeStudentForm } from "./form";
+import { useGetCoursesQuery } from "@/shared/store/services/CourseService";
+import { useGetUsersQuery } from "@/shared/store/services/UserService";
+import { Role } from "@/entities/user/IUser";
+import { CircleAlert } from "lucide-react";
+import CardSkeleton from "@/shared/components/ui/card-skeleton";
 
 
 
@@ -9,14 +14,26 @@ import { SubscribeStudentForm } from "./form";
 const SubscribeStudentCard = () => {
 
     const { t } = useTranslation()
+    const { data: students, isLoading: isStudentsLoading } = useGetUsersQuery({ role: Role.STUDENT })
+    const { data: courses, isLoading: isCoursesLoading } = useGetCoursesQuery({})
+
+    if (isStudentsLoading || isCoursesLoading) {
+        return <CardSkeleton />
+    }
 
     return (
-        <Card className="w-full  min-w-fit">
+        <Card className="w-full">
             <CardHeader>
                 <h4>{t('student.subscribe-card.header')}</h4>
             </CardHeader>
-            <CardContent className="flex-col h-1/2 gap-0 flex justify-center items-center w-full p-8">
-                <SubscribeStudentForm />
+            <CardContent className="flex-col  gap-0 flex justify-center items-center w-full p-8">
+                {(students && courses)
+                    ? <SubscribeStudentForm students={students} courses={courses} />
+                    : <div className="flex flex-col gap-y-2 items-center">
+                        <CircleAlert className="text-destructive" />
+                        <h4>Not found</h4>
+                    </div>
+                }
             </CardContent>
         </Card>
     )

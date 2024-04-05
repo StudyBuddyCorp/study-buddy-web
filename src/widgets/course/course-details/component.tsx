@@ -1,4 +1,3 @@
-import { Button } from "@/shared/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/shared/components/ui/card";
 import { useAppDispatch, useAppSelector } from "@/shared/store";
 import { useTranslation } from "react-i18next";
@@ -6,20 +5,19 @@ import { gd } from "@/shared/lib/utils";
 import { X } from "lucide-react";
 import { courseSlice } from "@/shared/store/reducers/CourseSlice";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import { CourseDeleteDialogLazy } from "@/features/course/course-delete-dialog";
+import CardLazy from "@/shared/components/ui/card-lazy";
+import CourseDeleteDialog from "@/features/course/course-delete-dialog/component";
+import CourseEditDialog from "@/features/course/course-edit-dialog/component";
+
 const CourseDetails = () => {
 
     const { t } = useTranslation()
     const { course } = useAppSelector(state => state.courseReducer)
     const dispatch = useAppDispatch()
-    const { setCourse, switchEdited } = courseSlice.actions
+    const { setCourse } = courseSlice.actions
 
     const handleClose = () => {
         dispatch(setCourse(null))
-    }
-
-    const handleEditClick = () => {
-        dispatch(switchEdited())
     }
 
     return (
@@ -41,7 +39,7 @@ const CourseDetails = () => {
                             </CardHeader>
                             <CardContent className="flex flex-col gap-y-2 font-extralight">
                                 <h3>{t('course.course-details.course-info')}</h3>
-                                <div className="flex gap-x-4 items-center">
+                                <div className="flex gap-x-4 items-start">
                                     <h6>{t('course.course-details.description')}:</h6>
                                     <span>{course.description}</span>
                                 </div>
@@ -51,9 +49,8 @@ const CourseDetails = () => {
                                     <span className="text-accent">{course.studentsCount}</span>
                                 </div>
                                 <h6>{t('course.course-details.groups')}:</h6>
-                                <Button onClick={handleEditClick} variant='secondary'>{t('course.course-details.edit')}</Button>
-                                <Button onClick={handleEditClick} variant='secondary'>{t('course.course-details.subscribe')}</Button>
-                                <CourseDeleteDialogLazy/>
+                                <CardLazy><CourseEditDialog /></CardLazy>
+                                <CardLazy ><CourseDeleteDialog /></CardLazy>
                             </CardContent>
                         </>
                         :
@@ -62,7 +59,6 @@ const CourseDetails = () => {
                         </div>}
                 </CSSTransition>
             </SwitchTransition>
-
         </Card>
     )
 }

@@ -1,9 +1,9 @@
 import { Skeleton } from "@/shared/components/ui/skeleton";
 
-const CourseCountCardSkeleton = () => {
+const CardSkeleton = () => {
 
     return <Skeleton className="w-full rounded-2xl shadow-lg" />
 
 }
 
-export default CourseCountCardSkeleton;
+export default CardSkeleton;

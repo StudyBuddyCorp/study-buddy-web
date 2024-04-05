@@ -10,6 +10,14 @@
             "description": "Description",
             "save": "Save"
         },
+        "edit-form": {
+            "trigger": "Edit",
+            "title":"Edit course",
+            "description": "You can change title and description of the course",
+            "title-field": "Title",
+            "description-field": "Description",
+            "save": "Save changes"
+        },
         "table": {
             "header": "Course",
             "input": "Search...",
@@ -32,11 +40,11 @@
             "edit": "Edit",
             "subscribe": "Subscribe",
             "delete-dialog": {
-                "trigger": "Delete",
+                "trigger": "Delete course",
                 "title": "Are you sure?",
                 "description": "Once deleted, it will not be possible to reverse this action. The data has been permanently removed from our servers.",
                 "button": "Delete forever"
-            } ,
+            },
             "select": "Select a course"
         }
     },
@@ -62,6 +70,11 @@
                 },
                 "button": "Subscribe"
             }
+        }
+    },
+    "pages":{
+        "admin": {
+            "course": "Admin Course"
         }
     }
 }
