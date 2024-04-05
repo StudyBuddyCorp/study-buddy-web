@@ -16,7 +16,7 @@ const CourseGrid: FC<Props> = ({ courses }) => {
             courses?.length === 2 && 'grid-cols-2',
             courses?.length && courses.length % 3 === 0 ? 'grid-cols-3' : 'grid-cols-4',
             !courses && "w-full flex justify-center items-center")}>
-            {courses?.map(course => <CourseCard key={course.id} description={course.description} title={course.title} />)}
+            {courses?.map(course => <CourseCard key={course.id} id={course.id} description={course.description} title={course.title} />)}
             {!courses?.length && <div className="flex justify-center items-center w-full h-full">
                 <h2>Курсы не найдены</h2>
             </div>}

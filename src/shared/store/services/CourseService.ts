@@ -1,6 +1,7 @@
 import {
     CreateCourseRequest,
     EditCourseRequest,
+    GetCourseRequest,
     GetCoursesRequest,
     SubscribeStudentRequest,
 } from "@/entities/course/request/";
@@ -39,6 +40,17 @@ export const courseAPI = createApi({
                 },
                 credentials: "include",
                 params,
+            }),
+            providesTags: () => ["courses"],
+        }),
+        getCourse: build.query<Course, GetCourseRequest>({
+            query: ({ id }) => ({
+                url: `/courses/${id}`,
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                credentials: "include",
             }),
             providesTags: () => ["courses"],
         }),
@@ -90,5 +102,12 @@ export const courseAPI = createApi({
     }),
 });
 
-export const { useCreateCourseMutation, useGetCoursesQuery, useCountQuery, useDeleteMutation, useEditMutation, useSubscribeStudentMutation } =
-    courseAPI;
+export const {
+    useCreateCourseMutation,
+    useGetCoursesQuery,
+    useGetCourseQuery,
+    useCountQuery,
+    useDeleteMutation,
+    useEditMutation,
+    useSubscribeStudentMutation,
+} = courseAPI;

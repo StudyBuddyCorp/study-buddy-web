@@ -15,6 +15,7 @@ const ProfilePage = lazy(() => import("@/pages/profile"));
 const AdminPage = lazy(() => import("@/pages/admin"));
 const CreateUserPage = lazy(() => import("@/pages/admin/students/page"));
 const SubscribeToCoursePage = lazy(() => import("@/pages/admin/subscribe/page"));
+const CoursePage = lazy(() => import("@/pages/course/page"));
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <DashboardPage />
+            },
+            {
+                path: '/course/:id',
+                element: <CoursePage/>
             },
             {
                 path: '/auth',
