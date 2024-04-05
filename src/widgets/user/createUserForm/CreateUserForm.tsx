@@ -14,8 +14,9 @@ import { Button } from "@/shared/components/ui/button";
 import { cn } from "@/shared/lib/utils";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/shared/components/ui/command";
 import { Check, ChevronsUpDown } from "lucide-react";
-import { userAPI } from "@/shared/store/services/UserService";
 import { useGetGroupsQuery } from "@/shared/store/services/GroupService";
+import { CommandList } from "cmdk";
+import { useCreateStudentMutation } from "@/shared/store/services/UserService";
 
 const CreateUserForm = () => {
 
@@ -35,26 +36,18 @@ const CreateUserForm = () => {
     const department = form.watch('department')
     const specialty = form.watch('specialty')
 
-    const [create, { isLoading: isCreateLoading }] = userAPI.useCreateStudentMutation()
+    const [create, { isLoading: isCreateLoading }] = useCreateStudentMutation()
     const { data: departments, isLoading: isDepartmentsLoadings } = useGetDepartmentQuery()
     const { data: specialties, isLoading: isSpecialtiesLoading, refetch: refetchSpecialties } = useGetSpecialtyQuery(department)
-    const { data: groups, isLoading: isGroupsLoading, refetch: refetchGroups } =useGetGroupsQuery({department, specialty})
+    const { data: groups, isLoading: isGroupsLoading, refetch: refetchGroups } = useGetGroupsQuery({ department, specialty })
 
-    useEffect(() => {
-        document.title = "Создание аккаунта пользователя"
-    }, [])
-
-    useEffect(() => {
-        
-    }, [])
     useEffect(() => {
         setDisabled(
             isSpecialtiesLoading ||
             isDepartmentsLoadings ||
-            isGroupsLoading ||
-            isCreateLoading
+            isGroupsLoading
         )
-    }, [isCreateLoading, isDepartmentsLoadings, isGroupsLoading, isSpecialtiesLoading])
+    }, [isDepartmentsLoadings, isGroupsLoading, isSpecialtiesLoading])
 
 
     useEffect(() => {
@@ -121,27 +114,29 @@ const CreateUserForm = () => {
                                     <Command>
                                         <CommandInput placeholder="Найти тип..." />
                                         <CommandEmpty>Тип не найден</CommandEmpty>
-                                        <CommandGroup>
-                                            {departments?.map((department) => (
-                                                <CommandItem
-                                                    value={department}
-                                                    key={department}
-                                                    onSelect={() => {
-                                                        form.setValue("department", department)
-                                                    }}
-                                                >
-                                                    <Check
-                                                        className={cn(
-                                                            "mr-2 h-4 w-4",
-                                                            department === field.value
-                                                                ? "opacity-100"
-                                                                : "opacity-0"
-                                                        )}
-                                                    />
-                                                    {department}
-                                                </CommandItem>
-                                            ))}
-                                        </CommandGroup>
+                                        <CommandList>
+                                            <CommandGroup>
+                                                {departments?.map((department) => (
+                                                    <CommandItem
+                                                        value={department}
+                                                        key={department}
+                                                        onSelect={() => {
+                                                            form.setValue("department", department)
+                                                        }}
+                                                    >
+                                                        <Check
+                                                            className={cn(
+                                                                "mr-2 h-4 w-4",
+                                                                department === field.value
+                                                                    ? "opacity-100"
+                                                                    : "opacity-0"
+                                                            )}
+                                                        />
+                                                        {department}
+                                                    </CommandItem>
+                                                ))}
+                                            </CommandGroup>
+                                        </CommandList>
                                     </Command>
                                 </PopoverContent>
                             </Popover>
@@ -177,27 +172,29 @@ const CreateUserForm = () => {
                                     <Command>
                                         <CommandInput placeholder="Найти тип..." />
                                         <CommandEmpty>Тип не найден</CommandEmpty>
-                                        <CommandGroup>
-                                            {specialties?.map((specialty) => (
-                                                <CommandItem
-                                                    value={specialty}
-                                                    key={specialty}
-                                                    onSelect={() => {
-                                                        form.setValue("specialty", specialty)
-                                                    }}
-                                                >
-                                                    <Check
-                                                        className={cn(
-                                                            "mr-2 h-4 w-4",
-                                                            specialty === field.value
-                                                                ? "opacity-100"
-                                                                : "opacity-0"
-                                                        )}
-                                                    />
-                                                    {specialty}
-                                                </CommandItem>
-                                            ))}
-                                        </CommandGroup>
+                                        <CommandList>
+                                            <CommandGroup>
+                                                {specialties?.map((specialty) => (
+                                                    <CommandItem
+                                                        value={specialty}
+                                                        key={specialty}
+                                                        onSelect={() => {
+                                                            form.setValue("specialty", specialty)
+                                                        }}
+                                                    >
+                                                        <Check
+                                                            className={cn(
+                                                                "mr-2 h-4 w-4",
+                                                                specialty === field.value
+                                                                    ? "opacity-100"
+                                                                    : "opacity-0"
+                                                            )}
+                                                        />
+                                                        {specialty}
+                                                    </CommandItem>
+                                                ))}
+                                            </CommandGroup>
+                                        </CommandList>
                                     </Command>
                                 </PopoverContent>
                             </Popover>
@@ -232,27 +229,29 @@ const CreateUserForm = () => {
                                     <Command>
                                         <CommandInput placeholder="Найти тип..." />
                                         <CommandEmpty>Тип не найден</CommandEmpty>
-                                        <CommandGroup>
-                                            {groups?.map((group) => (
-                                                <CommandItem
-                                                    value={group.id}
-                                                    key={group.number}
-                                                    onSelect={() => {
-                                                        form.setValue("group", group.id)
-                                                    }}
-                                                >
-                                                    <Check
-                                                        className={cn(
-                                                            "mr-2 h-4 w-4",
-                                                            group.id === field.value
-                                                                ? "opacity-100"
-                                                                : "opacity-0"
-                                                        )}
-                                                    />
-                                                    {group.number}
-                                                </CommandItem>
-                                            ))}
-                                        </CommandGroup>
+                                        <CommandList>
+                                            <CommandGroup>
+                                                {groups?.map((group) => (
+                                                    <CommandItem
+                                                        value={group.id}
+                                                        key={group.number}
+                                                        onSelect={() => {
+                                                            form.setValue("group", group.id)
+                                                        }}
+                                                    >
+                                                        <Check
+                                                            className={cn(
+                                                                "mr-2 h-4 w-4",
+                                                                group.id === field.value
+                                                                    ? "opacity-100"
+                                                                    : "opacity-0"
+                                                            )}
+                                                        />
+                                                        {group.number}
+                                                    </CommandItem>
+                                                ))}
+                                            </CommandGroup>
+                                        </CommandList>
                                     </Command>
                                 </PopoverContent>
                             </Popover>
@@ -261,7 +260,7 @@ const CreateUserForm = () => {
                     )}
                 />
                 <div className="flex flex-col gap-y-2">
-                    <SpinnerButton disabled={disabled}>Создать аккаунт</SpinnerButton>
+                    <SpinnerButton disabled={isCreateLoading}>Создать аккаунт</SpinnerButton>
                 </div>
             </form>
         </Form>

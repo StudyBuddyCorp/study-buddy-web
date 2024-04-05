@@ -1,6 +1,11 @@
-import { Course } from "@/entities/course";
-import { CreateCourseRequest } from "@/entities/course/CreateCourseRequest";
-import { CreateCourseResponse } from "@/entities/course/CreateCourseResponse";
+import {
+    CreateCourseRequest,
+    EditCourseRequest,
+    GetCoursesRequest,
+    SubscribeStudentRequest,
+} from "@/entities/course/request/";
+import { CreateCourseResponse } from "@/entities/course/response";
+import { Course } from "@/entities/course/ICourse";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -11,8 +16,8 @@ export const courseAPI = createApi({
     endpoints: (build) => ({
         createCourse: build.mutation<CreateCourseResponse, CreateCourseRequest>(
             {
-                query: (request: CreateCourseRequest) => ({
-                    url: "/courses/create",
+                query: (request) => ({
+                    url: "/courses",
                     method: "POST",
                     credentials: "include",
                     headers: {
@@ -25,9 +30,22 @@ export const courseAPI = createApi({
                 invalidatesTags: ["courses"],
             },
         ),
-        getCourses: build.query<Course[], void>({
+        getCourses: build.query<Course[], GetCoursesRequest>({
+            query: (params) => ({
+                url: "/courses",
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                credentials: "include",
+                params,
+            }),
+            providesTags: () => ["courses"],
+        }),
+        count: build.query<number, void>({
             query: () => ({
-                url: "/courses/get",
+                url: "/courses/count",
+                method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
@@ -35,7 +53,42 @@ export const courseAPI = createApi({
             }),
             providesTags: () => ["courses"],
         }),
+        delete: build.mutation<void, string>({
+            query: (id) => ({
+                url: `/courses/${id}`,
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                credentials: "include",
+            }),
+            invalidatesTags: ["courses"],
+        }),
+        edit: build.mutation<void, EditCourseRequest>({
+            query: ({ id, body }) => ({
+                url: `/courses/${id}`,
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                credentials: "include",
+                body,
+            }),
+            invalidatesTags: ["courses"],
+        }),
+        subscribeStudent: build.mutation<void, SubscribeStudentRequest>({
+            query: ({ courseId, studentId }) => ({
+                url: `/courses/${courseId}/subscribe/student/${studentId}`,
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+                credentials: "include",
+            }),
+            invalidatesTags: ["courses"],
+        }),
     }),
 });
 
-export const { useCreateCourseMutation, useGetCoursesQuery } = courseAPI;
+export const { useCreateCourseMutation, useGetCoursesQuery, useCountQuery, useDeleteMutation, useEditMutation, useSubscribeStudentMutation } =
+    courseAPI;

@@ -1,4 +1,4 @@
-import CoursesTable from "@/widgets/course/CoursesTable";
+import CoursesTable from "@/widgets/course/course-table/component";
 
 const SelectCourse = () => {
 

@@ -37,7 +37,7 @@ const Header = () => {
     }, [isAuthenticated])
 
     return (
-        <header className="relative w-full min-h-4 bg-card p-2 pr-4">
+        <header className="absolute h-full max-h-14 w-full min-h-4 bg-card p-2 pr-4">
             <nav className="flex justify-end">
                 <ul className="flex justify-evenly gap-2 items-center">
                     {showNav && links.map(item => <NavItem key={item.link} link={item.link}>{item.children}</NavItem>)}

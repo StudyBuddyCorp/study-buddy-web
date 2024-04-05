@@ -1,0 +1,80 @@
+{
+    "course": {
+        "count-card": {
+            "header": "Total courses",
+            "error": "Not found"
+        },
+        "create-form": {
+            "header": "Create",
+            "title": "Title",
+            "description": "Description",
+            "save": "Save"
+        },
+        "edit-form": {
+            "trigger": "Edit",
+            "title":"Edit course",
+            "description": "You can change title and description of the course",
+            "title-field": "Title",
+            "description-field": "Description",
+            "save": "Save changes"
+        },
+        "table": {
+            "header": "Course",
+            "input": "Search...",
+            "filter": "Filter",
+            "title": "Title",
+            "description": "Description",
+            "students-count": "Students",
+            "error": {
+                "header": "Not found",
+                "body": "Courses are not found"
+            }
+        },
+        "course-details": {
+            "course-info": "Course info",
+            "description": "Description",
+            "updated-at": "Last update",
+            "created-at": "Created at",
+            "students": "Students",
+            "groups": "Groups",
+            "edit": "Edit",
+            "subscribe": "Subscribe",
+            "delete-dialog": {
+                "trigger": "Delete course",
+                "title": "Are you sure?",
+                "description": "Once deleted, it will not be possible to reverse this action. The data has been permanently removed from our servers.",
+                "button": "Delete forever"
+            },
+            "select": "Select a course"
+        }
+    },
+    "student": {
+        "count-card": {
+            "header": "Total students",
+            "error": "Not found"
+        },
+        "subscribe-card": {
+            "header": "Subscribe",
+            "form": {
+                "select-student": {
+                    "label": "Student",
+                    "default-value": "Select student",
+                    "empty-value": "No students found",
+                    "search": "Search student"
+                },
+                "select-course": {
+                    "label": "Course",
+                    "default-value": "Select course",
+                    "empty-value": "No courses found",
+                    "search": "Search course"
+                },
+                "button": "Subscribe"
+            }
+        }
+    },
+    "pages":{
+        "admin": {
+            "course": "Admin Course"
+        }
+    }
+}

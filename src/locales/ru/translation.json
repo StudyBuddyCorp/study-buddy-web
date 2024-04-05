@@ -1,0 +1,81 @@
+{
+    "course": {
+        "count-card": {
+            "header": "Всего курсов",
+            "error": "Не найдено"
+        },
+        "create-form": {
+            "header": "Создать",
+            "title": "Название",
+            "description": "Описание",
+            "save": "Сохранить"
+        },
+        "edit-form": {
+            "trigger": "Редактировать",
+            "title": "Редактирование курса",
+            "description": "Вы можете изменить название и описание курса",
+            "title-field": "Название",
+            "description-field": "Описание",
+            "save": "Сохранить изменения"
+        },
+        "table": {
+            "header": "Курсы",
+            "input": "Найти...",
+            "filter": "Фильтр",
+            "title": "Название",
+            "description": "Описание",
+            "students-count": "Студентов",
+            "error": {
+                "header": "Не найдено",
+                "body": "Курсы не найдены"
+            }
+        },
+        "course-details": {
+            "header": "Курс:",
+            "course-info": "Информация о курсе",
+            "description": "Описание",
+            "updated-at": "Последнее обновление",
+            "created-at": "Создан",
+            "students": "Студенты",
+            "groups": "Группы",
+            "edit": "Редактировать",
+            "subscribe": "Подписать",
+            "delete-dialog": {
+                "trigger": "Удалить курс",
+                "title": "Вы уверены?",
+                "description": "После удаления отменить это действие будет невозможно. Данные полностью удалятся с наших серверов.",
+                "button": "Удалить навсегда"
+            },
+            "select": "Выберите курс"
+        }
+    },
+    "student": {
+        "count-card": {
+            "header": "Всего студентов",
+            "error": "Не найдено"
+        },
+        "subscribe-card": {
+            "header": "Подписать",
+            "form": {
+                "select-student": {
+                    "label": "Студент",
+                    "default-value": "Выберите студента",
+                    "empty-value": "Студенты не найдены",
+                    "search": "Найти студента..."
+                },
+                "select-course": {
+                    "label": "Курс",
+                    "default-value": "Выберите курс",
+                    "empty-value": "Курсы не найдены",
+                    "search": "Найти курс..."
+                },
+                "button": "Подписать"
+            }
+        },
+        "pages": {
+            "admin": {
+                "course": "Админ Курс"
+            }
+        }
+    }
+}

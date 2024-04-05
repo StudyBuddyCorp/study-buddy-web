@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/shared/store"
-import { subscribeSlice } from "@/shared/store/reducers/SubscribeSlice"
-import UserTable from "@/widgets/user/UserTable"
+import { courseSlice } from "@/shared/store/reducers/CourseSlice"
+import UserTable from "@/widgets/user/user-table/component"
 import { HeartCrack } from "lucide-react"
 import CourseCard from "../course/CourseCard"
 import { Button } from "@/shared/components/ui/button"
@@ -8,9 +8,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const SelectSubscriber = () => {
 
-    const { course } = useAppSelector(state => state.subscribeReducer)
+    const { course } = useAppSelector(state => state.courseReducer)
     const dispatch = useAppDispatch()
-    const { setCourse } = subscribeSlice.actions
+    const { setCourse } = courseSlice.actions
 
     if (course) {
         return (

@@ -19,7 +19,7 @@
     --secondary: 60 4.8% 95.9%;
     --secondary-foreground: 24 9.8% 10%;
  
-    --muted: 60 4.8% 95.9%;
+    --muted: 60 4.8% 90.9%;
     --muted-foreground: 25 5.3% 44.7%;
  
     --accent: 200 100% 60%;
@@ -77,13 +77,19 @@
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl
   }
   h2 {
-    @apply scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0
+    @apply scroll-m-20 text-3xl font-bold tracking-tight first:mt-0
   }
   h3 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight
+    @apply scroll-m-20 text-2xl font-bold tracking-tight
   }
   h4 {
     @apply scroll-m-20 text-xl font-semibold tracking-tight
+  }
+  h5 {
+    @apply scroll-m-20 text-lg font-bold tracking-tight
+  }
+  h6 {
+    @apply scroll-m-20 font-light tracking-tight
   }
   p {
     @apply leading-7 [&:not(:first-child)]:mt-4
