@@ -18,9 +18,9 @@ const AdminCourse = () => {
     }, [t])
 
     return (
-        <div className="w-full h-full px-8 flex lg:flex-row flex-col gap-4 justify-between">
-            <div className="flex flex-col w-full h-full gap-y-8">
-                <div className="flex 2xl:flex-row flex-col w-full h-full 2xl:max-h-96 gap-4">
+        <div className="w-full px-4 flex lg:flex-row flex-col gap-4 justify-between">
+            <div className="flex flex-col-reverse w-full gap-y-8">
+                <div className="flex 2xl:flex-row flex-col w-full gap-4">
                     <CardLazy>
                         <CourseCreateForm />
                     </CardLazy>
@@ -38,11 +38,9 @@ const AdminCourse = () => {
                     <CourseTable />
                 </CardLazy>
             </div>
-            <div className="h-full">
-                <CardLazy>
-                    <CourseDetails />
-                </CardLazy>
-            </div>
+            <CardLazy >
+                <CourseDetails />
+            </CardLazy>
         </div>
     )
 }

@@ -4,7 +4,6 @@ import { useLocation, useOutlet } from "react-router-dom";
 import LoadingRoute from "./LoadingRoute";
 import { useAuth } from "@/shared/hooks/useAuth";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
-import AdminSidebar from "@/widgets/admin/AdminSidebar";
 
 
 const Layout = () => {
@@ -16,7 +15,7 @@ const Layout = () => {
     return (
         <>
             <Header />
-            {location.pathname.includes('admin') && <AdminSidebar />}
+            {/* {location.pathname.includes('admin') && <AdminSidebar />} */}
             <div className="h-dvh flex flex-col">
                 <Suspense fallback={<LoadingRoute />}>
                     <main className="mx-auto w-full pt-20 pb-4 h-full flex flex-col gap-y-8 flex-grow">

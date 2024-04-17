@@ -1,18 +1,26 @@
 import {
     CreateCourseRequest,
-    EditCourseRequest,
     GetCourseRequest,
     GetCoursesRequest,
-    SubscribeStudentRequest,
+    CourseIdUserIdRequest,
 } from "@/entities/course/request/";
 import { CreateCourseResponse } from "@/entities/course/response";
 import { Course } from "@/entities/course/ICourse";
 import { API_URL } from "@/shared/lib/api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { studentSubscribeSchema } from "@/schemas";
+import * as z from "zod";
+import { courseUpdateSchema } from '@/schemas'
 
 export const courseAPI = createApi({
     reducerPath: "courseAPI",
-    baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: API_URL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        credentials: "include",
+    }),
     tagTypes: ["courses"],
     endpoints: (build) => ({
         createCourse: build.mutation<CreateCourseResponse, CreateCourseRequest>(
@@ -20,12 +28,6 @@ export const courseAPI = createApi({
                 query: (request) => ({
                     url: "/courses",
                     method: "POST",
-                    credentials: "include",
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem(
-                            "token",
-                        )}`,
-                    },
                     body: request,
                 }),
                 invalidatesTags: ["courses"],
@@ -35,10 +37,6 @@ export const courseAPI = createApi({
             query: (params) => ({
                 url: "/courses",
                 method: "GET",
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-                credentials: "include",
                 params,
             }),
             providesTags: () => ["courses"],
@@ -47,10 +45,6 @@ export const courseAPI = createApi({
             query: ({ id }) => ({
                 url: `/courses/${id}`,
                 method: "GET",
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-                credentials: "include",
             }),
             providesTags: () => ["courses"],
         }),
@@ -58,10 +52,6 @@ export const courseAPI = createApi({
             query: () => ({
                 url: "/courses/count",
                 method: "GET",
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-                credentials: "include",
             }),
             providesTags: () => ["courses"],
         }),
@@ -69,35 +59,35 @@ export const courseAPI = createApi({
             query: (id) => ({
                 url: `/courses/${id}`,
                 method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-                credentials: "include",
             }),
             invalidatesTags: ["courses"],
         }),
-        edit: build.mutation<void, EditCourseRequest>({
-            query: ({ id, body }) => ({
+        edit: build.mutation<void, z.infer<typeof courseUpdateSchema>>({
+            query: ({ id, title, description }) => ({
                 url: `/courses/${id}`,
                 method: "PATCH",
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                body: {
+                    title,
+                    description
                 },
-                credentials: "include",
-                body,
             }),
             invalidatesTags: ["courses"],
         }),
-        subscribeStudent: build.mutation<void, SubscribeStudentRequest>({
+        subscribeStudent: build.mutation<
+            void,
+            z.infer<typeof studentSubscribeSchema>
+        >({
             query: ({ courseId, studentId }) => ({
                 url: `/courses/${courseId}/subscribe/student/${studentId}`,
                 method: "PATCH",
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-                credentials: "include",
             }),
             invalidatesTags: ["courses"],
+        }),
+        checkEdit: build.query<boolean, CourseIdUserIdRequest>({
+            query: ({ courseId, userId }) => ({
+                url: `/courses/${courseId}/can-edit/${userId}`,
+                method: "GET",
+            }),
         }),
     }),
 });
@@ -110,4 +100,5 @@ export const {
     useDeleteMutation,
     useEditMutation,
     useSubscribeStudentMutation,
+    useCheckEditQuery,
 } = courseAPI;

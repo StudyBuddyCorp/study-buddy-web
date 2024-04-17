@@ -3,5 +3,6 @@ export interface EditCourseRequest {
     body: {
         title: string,
         description: string
+        body: string
     }
 }

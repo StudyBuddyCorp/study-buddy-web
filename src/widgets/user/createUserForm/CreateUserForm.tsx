@@ -5,7 +5,7 @@ import { SpinnerButton } from "@/shared/components/ui/SpinnerButton";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { formSchema } from "./formSchema";
+import { createUserSchema } from "./formSchema";
 import { useEffect, useState } from "react";
 import { useGetSpecialtyQuery } from "@/shared/store/services/SpecialtyService";
 import { useGetDepartmentQuery } from "@/shared/store/services/DepartmentService";
@@ -22,8 +22,8 @@ const CreateUserForm = () => {
 
     const [disabled, setDisabled] = useState(false)
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof createUserSchema>>({
+        resolver: zodResolver(createUserSchema),
         defaultValues: {
             name: '',
             email: '',
@@ -59,7 +59,7 @@ const CreateUserForm = () => {
     }, [specialty, refetchGroups])
 
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: z.infer<typeof createUserSchema>) => {
         await create(values)
     }
 

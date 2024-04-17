@@ -1,4 +1,13 @@
 {
+    "home": {
+        "courses-header": "Курсы",
+        "courses-not-found": "Курсы не найдены",
+        "display": {
+            "display-mode": "Отображение",
+            "grid": "Сетка",
+            "list": "Список"
+        }
+    },
     "course": {
         "count-card": {
             "header": "Всего курсов",

@@ -1,7 +1,7 @@
 import { CreateCourseRequest } from "./CreateCourseRequest";
 import { GetCoursesRequest } from "./GetCoursesRequest";
 import { EditCourseRequest } from "./EditCourseRequest";
-import { SubscribeStudentRequest } from "./SubscribeStudentRequest";
+import { CourseIdUserIdRequest } from "./CourseIdUserIdRequest";
 import { GetCourseRequest } from "./GetCourseRequest";
 
 export type {
@@ -9,5 +9,5 @@ export type {
     GetCoursesRequest,
     GetCourseRequest,
     EditCourseRequest,
-    SubscribeStudentRequest,
+    CourseIdUserIdRequest,
 };
