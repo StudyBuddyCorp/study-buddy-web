@@ -1,11 +1,14 @@
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/shared/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components/ui/select";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     setListType: (type: 'GRID' | 'LIST') => void
 }
 
 const SelectCourseListType: FC<Props> = ({ setListType }) => {
+
+    const { t } = useTranslation()
 
     const handleValueChange = (value: string) => {
         if (value === 'GRID' || value === 'LIST') {
@@ -16,13 +19,12 @@ const SelectCourseListType: FC<Props> = ({ setListType }) => {
     return (
         <Select onValueChange={handleValueChange}>
             <SelectTrigger aria-label="select course display variant" className="bg-card rounded-xl hidden sm:flex w-[180px]">
-                <SelectValue placeholder="Отображение" />
+                <SelectValue placeholder={t('home.display.display-mode')} />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectLabel>Тип отображения</SelectLabel>
-                    <SelectItem value="LIST">Список</SelectItem>
-                    <SelectItem value="GRID">Сетка</SelectItem>
+                    <SelectItem value="LIST">{t('home.display.list')}</SelectItem>
+                    <SelectItem value="GRID">{t('home.display.grid')}</SelectItem>
                 </SelectGroup>
             </SelectContent>
         </Select>

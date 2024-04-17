@@ -3,8 +3,12 @@ import { useState } from "react";
 import SelectCourseListType from "./SelectCoursesListType";
 import CourseList from "./CourseList";
 import CourseGrid from "./CourseGrid";
+import { useTranslation } from "react-i18next";
 
 const CoursesBlock = () => {
+
+    const { t } = useTranslation()
+
 
     const { data: courses } = useGetCoursesQuery({})
     const [listType, setListType] = useState<'GRID' | 'LIST'>('LIST')
@@ -13,7 +17,7 @@ const CoursesBlock = () => {
     return (
         <div className="w-full h-full mx-auto flex flex-col gap-y-4 mt-4 p-2 sm:p-0">
             <div className="flex gap-x-8">
-                <h3 className="font-bold">Курсы</h3>
+                <h3 className="font-bold">{t('home.courses-header')}</h3>
                 <SelectCourseListType setListType={setListType} />
             </div>
             {(listType === 'LIST' ? <CourseList courses={courses} /> : <CourseGrid courses={courses} />)}

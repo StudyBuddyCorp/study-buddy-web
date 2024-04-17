@@ -138,3 +138,21 @@
   opacity: 0;
   transition: opacity 300ms;
 }
+.markdown a {
+  @apply text-accent underline-offset-4 hover:underline;
+}
+.markdown ul {
+  list-style:disc;
+  @apply list-inside;
+}
+.markdown code {
+  @apply bg-card text-card-foreground p-1 rounded-sm font-medium;
+}
+.markdown pre {
+
+  @apply w-full flex ;
+
+  code {
+    @apply p-2 text-accent;
+  }
+}

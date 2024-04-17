@@ -1,4 +1,13 @@
 {
+    "home": {
+        "courses-header": "Courses",
+        "courses-not-found": "Courses not found",
+        "display": {
+            "display-mode": "Display Mode",
+            "grid": "Grid",
+            "list": "List"
+        }
+    },
     "course": {
         "count-card": {
             "header": "Total courses",

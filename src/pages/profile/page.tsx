@@ -35,7 +35,7 @@ const ProfilePage = () => {
                         </ul>
                     </div>
                     <div className="w-full flex flex-col gap-y-2">
-                        {user.role === Role.ADMIN && <Link className="w-full" to='/admin'><Button className="w-full" disabled={isLoading}>Админ панель</Button></Link>}
+                        {user.role === Role.ADMIN && <Link className="w-full" to='/admin/course'><Button className="w-full" disabled={isLoading}>Админ панель</Button></Link>}
                         <Button disabled={isLoading} size='sm' variant='destructive' onClick={handleSignOut}>Выйти</Button>
                     </div>
                 </div>

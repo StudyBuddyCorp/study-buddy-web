@@ -1,8 +1,7 @@
 import { Form } from "@/shared/components/ui/form"
-import { SelectStudentField } from "./form/select-student-field/component";;
+import { SelectStudentField } from "./form/select-student-field/component";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { formSchema } from "./formSchema";
 import * as z from "zod";
 import SelectCourseField from "./form/select-course-field/component";
 import { useSubscribeStudentMutation } from "@/shared/store/services/CourseService";
@@ -12,6 +11,7 @@ import { t } from "i18next";
 import { useAppSelector } from "@/shared/store";
 import { useEffect } from "react";
 import { Course } from "@/entities/course";
+import { studentSubscribeSchema } from "@/schemas";
 
 
 
@@ -21,13 +21,13 @@ interface Props {
     courses: Course[]
 }
 
-const SubscribeStudentForm = ({students, courses}:Props) => {
+const SubscribeStudentForm = ({ students, courses }: Props) => {
 
     const { course } = useAppSelector(state => state.courseReducer)
-   const [subscribe, { isLoading: isSubscribing }] = useSubscribeStudentMutation()
+    const [subscribe, { isLoading: isSubscribing }] = useSubscribeStudentMutation()
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof studentSubscribeSchema>>({
+        resolver: zodResolver(studentSubscribeSchema),
         defaultValues: {
             courseId: course ? course.id : '',
             studentId: ''
@@ -42,7 +42,7 @@ const SubscribeStudentForm = ({students, courses}:Props) => {
 
 
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: z.infer<typeof studentSubscribeSchema>) => {
         await subscribe(values)
     }
 
@@ -57,7 +57,7 @@ const SubscribeStudentForm = ({students, courses}:Props) => {
             </Form>
         );
     }
-   
+
 }
 export { SubscribeStudentForm }
 

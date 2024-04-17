@@ -15,16 +15,25 @@ const AdminSidebar = () => {
         setIsOpen(false)
     }
 
+    
+
     return (
-        <button onMouseLeave={handleClose} onMouseEnter={handleOpen} className={cn("bg-card h-full p-4 absolute top-0 pt-16 z-10 left-0 overflow-hidden h- flex", isOpen && "bg-card/75 backdrop-blur-sm")}>
-            <nav >
+        <div
+            onMouseLeave={handleClose}
+            onMouseEnter={handleOpen}
+            className={cn(`
+            bg-card
+            h-screen max-w-fit p-4
+            sticky top-10 left-0 z-10 overflow-hidden`,
+                isOpen && "bg-card/75 backdrop-blur-sm")}>
+            <nav>
                 <ul className="flex flex-col gap-y-4" >
                     <AdminSidebarItem to='/admin/course'><School />{isOpen ? 'Курсы' : ''}</AdminSidebarItem>
                     <AdminSidebarItem to='/admin/subscribe'><Users />{isOpen ? 'Студенты' : ''}</AdminSidebarItem>
                     <AdminSidebarItem to='/admin/teachers'><Book /> {isOpen ? 'Преподаватели' : ''}</AdminSidebarItem>
                 </ul>
             </nav>
-        </button>
+        </div>
     )
 }
 

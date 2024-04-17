@@ -6,25 +6,24 @@ import { SpinnerButton } from "@/shared/components/ui/SpinnerButton";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { formSchema } from "./formSchema";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader } from "@/shared/components/ui/card";
 import { Textarea } from "@/shared/components/ui/textarea";
-
+import {courseCreateSchema} from '@/schemas'
 const CourseCreateForm = () => {
 
     const { t } = useTranslation()
     const [create, { isLoading }] = courseAPI.useCreateCourseMutation()
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof courseCreateSchema>>({
+        resolver: zodResolver(courseCreateSchema),
         defaultValues: {
             title: '',
             description: ''
         }
     })
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const onSubmit = async (values: z.infer<typeof courseCreateSchema>) => {
         await create(values)
     }
 

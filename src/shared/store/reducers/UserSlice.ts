@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userAPI } from "../services/UserService";
 import { User } from "@/entities/user";
+
 type AuthState = {
     user: User | null;
     token: string | null;
     isLoading: boolean;
     isAuthenticated: boolean;
 };
+
 const initialState: AuthState = {
     user: null,
     token: null,
     isLoading: false,
     isAuthenticated: false,
 };
+
 export const authSlice = createSlice({
     name: "auth",
     initialState,

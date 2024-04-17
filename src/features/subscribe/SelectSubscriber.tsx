@@ -16,7 +16,7 @@ const SelectSubscriber = () => {
         return (
             <div className="flex flex-col w-full gap-y-4">
                 <h4>Вы выбрали:</h4>
-                <CourseCard description={course.description} title={course.title} />
+                <CourseCard id={course.id} description={course.description} title={course.title} />
                 <Button className="flex justify-start" variant='ghost' size='sm' onClick={() => dispatch(setCourse(null))}>Отменить выбор</Button>
                 <h4>Кого хотите подписать?</h4>
                 <Accordion className="w-full bg-card p-8 rounded-md shadow-sm" type="single" collapsible>

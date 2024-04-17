@@ -20,8 +20,9 @@ const CourseDetails = () => {
         dispatch(setCourse(null))
     }
 
+
     return (
-        <Card className="relative w-full min-w-96 lg:max-w-md h-full flex flex-col">
+        <Card className="sticky overflow-hidden top-0 left-0 w-full min-w-96 lg:max-w-md h-full flex flex-col">
             <SwitchTransition>
                 <CSSTransition
                     key={course === null ? null : course.id}
