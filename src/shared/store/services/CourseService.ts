@@ -27,7 +27,7 @@ export const courseAPI = createApi({
         ),
         getCourses: build.query<Course[], void>({
             query: () => ({
-                url: "/courses/get",
+                url: "/courses",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },

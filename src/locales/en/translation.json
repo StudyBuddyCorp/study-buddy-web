@@ -36,5 +36,10 @@
             "header": "Total students",
             "error": "Not found"
         }
+    },
+    "brs": {
+        "table": {
+
+        }
     }
 }
