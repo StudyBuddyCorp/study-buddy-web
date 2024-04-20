@@ -7,6 +7,7 @@ import { specialtyAPI } from "./services/SpecialtyService";
 import { departmentAPI } from "./services/DepartmentService";
 import { groupAPI } from "./services/GroupService";
 import { courseReducer } from "./reducers/SubscribeSlice";
+import { brsAPI } from "./services/BrsService";
 
 export const rootReducer = combineReducers({
     authReducer,
@@ -16,6 +17,7 @@ export const rootReducer = combineReducers({
     [specialtyAPI.reducerPath]: specialtyAPI.reducer,
     [departmentAPI.reducerPath]: departmentAPI.reducer,
     [groupAPI.reducerPath]: groupAPI.reducer,
+    [brsAPI.reducerPath]: brsAPI.reducer,
 });
 
 export const store = configureStore({
@@ -27,6 +29,7 @@ export const store = configureStore({
             specialtyAPI.middleware,
             departmentAPI.middleware,
             groupAPI.middleware,
+            brsAPI.middleware,
         ),
 });
 

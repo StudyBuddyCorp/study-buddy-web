@@ -39,7 +39,22 @@
     },
     "brs": {
         "table": {
-
+            "year": "Year",
+            "courseNum": "Grade",
+            "courseTitle": "Subject",
+            "teacher": "Teacher",
+            "reporting": "Reporting",
+            "attestation1": "1",
+            "attestation2": "2",
+            "attestation3": "3",
+            "average": "Average",
+            "exam": "Exem",
+            "extra": "Extra",
+            "total": "Total",
+            "error": {
+                "header": "Not found",
+                "body": "Grades are not found"
+            }
         }
     }
 }

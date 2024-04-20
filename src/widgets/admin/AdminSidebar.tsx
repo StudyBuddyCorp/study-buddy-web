@@ -1,4 +1,4 @@
-import { Book, School, Users } from "lucide-react";
+import { Book, NotebookText, School, Users } from "lucide-react";
 import AdminSidebarItem from "./AdminSidebarItem";
 import { useRef, useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
@@ -33,6 +33,7 @@ const AdminSidebar = () => {
                             <AdminSidebarItem ref={nodeRef} to='/admin/course'><School />{isOpen ? 'Курсы' : ''}</AdminSidebarItem>
                             <AdminSidebarItem ref={nodeRef} to='/admin/subscribe'><Users />{isOpen ? 'Студенты' : ''}</AdminSidebarItem>
                             <AdminSidebarItem ref={nodeRef} to='/admin/teachers'><Book /> {isOpen ? 'Преподаватели' : ''}</AdminSidebarItem>
+                            <AdminSidebarItem ref={nodeRef} to='/admin/brs'><NotebookText /> {isOpen ? 'БРС' : ''}</AdminSidebarItem>
                         </ul>
                     </nav>
                 </button>

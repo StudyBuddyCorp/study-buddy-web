@@ -36,5 +36,25 @@
             "header": "Всего студентов",
             "error": "Не найдено"
         }
+    },
+    "brs": {
+        "table": {
+            "year": "Год",
+            "courseNum": "Курс",
+            "courseTitle": "Предмет",
+            "teacher": "Преподователь",
+            "reporting": "Отчетность",
+            "attestation1": "1",
+            "attestation2": "2",
+            "attestation3": "3",
+            "average": "Взеш. балл",
+            "exam": "Экзамен",
+            "extra": "Доп. балл",
+            "total": "Итог",
+            "error": {
+                "header": "Не найдено",
+                "body": "Оценки не найдены"
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@ import { lazy } from "react";
 import Layout from "./Layout";
 import ErrorPage from "@/pages/error";
 import AdminLayout from "./AdminLayout";
-import BrsPage from "@/pages/brs";
+import BrsPage from "@/pages/brs/component";
 import Schedule from "@/pages/schedule";
 
 const AdminCourse = lazy(() => import("@/pages/admin/course"));
