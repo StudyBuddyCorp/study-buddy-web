@@ -27,7 +27,7 @@ const AdminSidebar = () => {
                 classNames='courses'
                 nodeRef={nodeRef}
             >
-                <button ref={nodeRef} onMouseLeave={handleClose} onMouseEnter={handleOpen} className={cn("bg-card p-4 fixed top-0 pt-16 z-10 left-0 overflow-hidden h-dvh flex", isOpen && "bg-card/75 backdrop-blur-sm")}>
+                <button ref={nodeRef} onMouseLeave={handleClose} onMouseEnter={handleOpen} className={cn("bg-card p-4 fixed top-0 pt-20 z-9 left-0 overflow-hidden h-dvh flex", isOpen && "bg-card/75 backdrop-blur-sm")}>
                     <nav ref={nodeRef}>
                         <ul ref={nodeRef} className="flex flex-col gap-y-4" >
                             <AdminSidebarItem ref={nodeRef} to='/admin/course'><School />{isOpen ? 'Курсы' : ''}</AdminSidebarItem>
