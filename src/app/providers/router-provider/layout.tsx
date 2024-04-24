@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { useLocation, useOutlet } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import LoadingRoute from './loading-route';
-import Header from '@/widgets/header/header1';
+import Header from '@/widgets/header/header';
 import { useAuth } from '@/shared/hooks/useAuth';
 
 const Layout = () => {

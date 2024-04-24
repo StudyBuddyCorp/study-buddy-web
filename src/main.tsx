@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import App from './app/app.tsx';
+import App from './app/app1.tsx';
 import './index.css';
 import './i18n';
 

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { GetGroupsRequest } from '@/entities/group/get-group-request';
-import { Group } from '@/entities/group/group1';
+import { Group } from '@/entities/group/group';
 import { API_URL } from '@/shared/lib/api';
 
 export const groupAPI = createApi({
