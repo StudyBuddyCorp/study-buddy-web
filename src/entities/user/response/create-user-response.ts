@@ -1,5 +1,5 @@
-import { User } from "../IUser";
+import { User } from '../user';
 
 export interface CreateUserResponse extends Response {
-    user: User
+  user: User;
 }

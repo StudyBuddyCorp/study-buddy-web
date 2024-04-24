@@ -1,3 +1,3 @@
-import CoursesBlock from "./CoursesBlock";
+import CoursesBlock from './course-block';
 
-export {CoursesBlock}
+export { CoursesBlock };

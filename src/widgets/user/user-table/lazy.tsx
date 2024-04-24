@@ -1,15 +1,10 @@
-import { Suspense, lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { UserTableSkeleton } from '.';
 
-const Component = lazy(() => import('./component'))
+const Component = lazy(() => import('./component'));
 
 const UserTableLazy = () => {
-
-    return (
-        <Suspense fallback={<UserTableSkeleton />}>
-            {<Component />}
-        </Suspense>
-    )
-}
+  return <Suspense fallback={<UserTableSkeleton />}>{<Component />}</Suspense>;
+};
 
 export default UserTableLazy;

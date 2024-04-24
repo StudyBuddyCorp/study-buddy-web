@@ -1,4 +1,4 @@
-import { CreateUserResponse } from "./CreateUserResponse";
-import { GetStudentsResponse } from "./GetStudentsResponse";
+import { CreateUserResponse } from './create-user-response';
+import { GetStudentsResponse } from './get-students-response';
 
 export type { CreateUserResponse, GetStudentsResponse };

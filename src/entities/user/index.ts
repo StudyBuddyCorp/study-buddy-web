@@ -1,3 +1,16 @@
-import { User } from "./IUser";
+export enum Role {
+  TEACHER = 'TEACHER',
+  STUDENT = 'STUDENT',
+  ADMIN = 'ADMIN',
+}
 
-export type { User };
+export interface User {
+  id: string;
+  role: Role;
+  name: string;
+  email: string;
+  departmentTitle: string;
+  specialityTitle: string;
+  groupId: string;
+  groupNumber: number;
+}

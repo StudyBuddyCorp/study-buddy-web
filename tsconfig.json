@@ -2,16 +2,36 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"],
+      "@course/*": [
+        "./src/entities/course/*",
+        "./src/features/course/*",
+        "./src/widgets/course/*"
+      ],
+      "@user/*": [
+        "./src/entities/user/*",
+        "./src/features/user/*",
+        "./src/widgets/user/*"
+      ],
+      "@department/*": [
+        "./src/entities/department/*",
+        "./src/features/department/*",
+        "./src/widgets/department/*"
+      ],
+      "@group/*": [
+        "./src/entities/group/*",
+        "./src/features/group/*",
+        "./src/widgets/group/*"
+      ],
+      "@specialty/*": [
+        "./src/entities/specialty/*",
+        "./src/features/specialty/*",
+        "./src/widgets/specialty/*"
+      ],
+      "@ui/*": ["./src/shared/components/ui/*"]
     },
     "module": "ESNext",
     "skipLibCheck": true,
@@ -28,9 +48,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "references": [
     {
       "path": "./tsconfig.node.json"

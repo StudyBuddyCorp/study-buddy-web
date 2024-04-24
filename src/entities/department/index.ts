@@ -1,3 +1,3 @@
-import { Department } from "./Department";
+import { Department } from './department';
 
 export type { Department };

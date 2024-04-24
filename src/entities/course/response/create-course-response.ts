@@ -1,4 +1,4 @@
-import { User } from "../../user/IUser";
+import { User } from '../../user/user';
 
 export interface CreateCourseResponse extends Response {
   id: string;

@@ -1,3 +1,3 @@
-import ProfilePage from "./page";
+import ProfilePage from './page';
 
 export default ProfilePage;

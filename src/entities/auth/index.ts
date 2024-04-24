@@ -1,5 +1,5 @@
-import { AuthenticationResponse } from "./AuthenticationResponse";
-import { LoginRequest } from "./LoginRequest";
-import { RegistrationRequest } from "./RegistrationRequest";
+import { AuthenticationResponse } from './auth-response';
+import { LoginRequest } from './login-request';
+import { RegistrationRequest } from './register-request';
 
-export type { AuthenticationResponse, LoginRequest, RegistrationRequest}
+export type { AuthenticationResponse, LoginRequest, RegistrationRequest };

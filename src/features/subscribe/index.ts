@@ -1,5 +1,5 @@
-import Heading from "./Heading";
-import SelectCourse from "./SelectCourse";
-import SelectSubscriber from "./SelectSubscriber";
+import { Heading } from './heading';
+import SelectCourse from './select-course';
+import SelectSubscriber from './select-subscriber';
 
-export { Heading, SelectCourse,SelectSubscriber };
+export { Heading, SelectCourse, SelectSubscriber };
