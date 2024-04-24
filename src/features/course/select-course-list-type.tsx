@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Select,
   SelectContent,
@@ -5,9 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@ui/select';
-import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+} from '@/ui/select';
 
 interface Props {
   setListType: (type: 'GRID' | 'LIST') => void;

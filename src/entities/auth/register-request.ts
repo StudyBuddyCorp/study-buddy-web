@@ -1,4 +1,4 @@
-import { Role } from '../user/user';
+import { Role } from '@/entities/user';
 
 export interface RegistrationRequest {
   email: string;

@@ -1,4 +1,4 @@
-import { CoursesBlock } from '@/features/course';
+import { CoursesBlock } from '@/features/course/courses-block';
 
 const DashboardPage = () => {
   return (

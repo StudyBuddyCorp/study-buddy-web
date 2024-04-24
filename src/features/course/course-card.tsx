@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader } from '@ui/card';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, CardContent, CardHeader } from '@/ui/card';
 
 interface Props {
   id: string;
@@ -8,7 +8,7 @@ interface Props {
   description: string;
 }
 
-const CourseCard = memo(({ id, title, description }: Props) => {
+export const CourseCard = memo(({ id, title, description }: Props) => {
   return (
     <Link to={`/course/${id}`}>
       <Card className='hover:scale-[101%] transition-all duration-200 hover:bg-card/50 h-full'>
@@ -28,5 +28,3 @@ const CourseCard = memo(({ id, title, description }: Props) => {
     </Link>
   );
 });
-
-export default CourseCard;

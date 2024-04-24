@@ -18,7 +18,7 @@ import { cn } from '@/shared/lib/utils';
 import { Select, SelectValue } from '@/shared/components/ui/select';
 import { Input } from '@/shared/components/ui/input';
 import { useDebounce } from '@/shared/hooks/useDebounce';
-import CardSkeleton from '@/shared/components/ui/card-skeleton';
+import { CardSkeleton } from '@/shared/components/ui/card-skeleton';
 
 const CoursesTable = () => {
   const { t } = useTranslation();

@@ -2,6 +2,18 @@ import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@/ui/button';
+import { SpinnerButton } from '@/ui/spinner-button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/ui/form';
+import { Input } from '@/ui/input';
+import { Textarea } from '@/ui/textarea';
 import {
   Dialog,
   DialogClose,
@@ -10,24 +22,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@ui/dialog';
-import { Button } from '@ui/button';
-import SpinnerButton from '@ui/SpinnerButton';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@ui/form';
-import { Input } from '@ui/input';
-import { Textarea } from '@ui/textarea';
+} from '@/ui/dialog';
 import { useAppSelector } from '@/shared/store';
 import { useEditMutation } from '@/shared/store/services/course-service';
 import { courseUpdateSchema } from '@/schemas';
 
-const CourseEditDialog = () => {
+export const CourseEditDialog = () => {
   const { t } = useTranslation();
   const [edit, { isLoading }] = useEditMutation();
   const { course } = useAppSelector(state => state.courseReducer);
@@ -116,5 +116,3 @@ const CourseEditDialog = () => {
     </Dialog>
   );
 };
-
-export default CourseEditDialog;

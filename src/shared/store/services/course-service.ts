@@ -5,8 +5,8 @@ import {
   CreateCourseRequest,
   GetCourseRequest,
   GetCoursesRequest,
-} from '@course/request';
-import { CreateCourseResponse } from '@course/response';
+} from '@/entities/course/request';
+import { CreateCourseResponse } from '@/entities/course/response';
 import { Course } from '@/entities/course/course';
 import { API_URL } from '@/shared/lib/api';
 import { courseUpdateSchema, studentSubscribeSchema } from '@/schemas';

@@ -1,14 +1,14 @@
-import { Form } from '@ui/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { User } from '@user';
-import { Button } from '@ui/button';
 import { t } from 'i18next';
 import { useEffect } from 'react';
-import { Course } from '@course';
 import { SelectStudentField } from './form/select-student-field/component';
 import SelectCourseField from './form/select-course-field/component';
+import { Button } from '@/ui/button';
+import { Form } from '@/ui/form';
+import { Course } from '@/entities/course';
+import { User } from '@/entities/user';
 import { useSubscribeStudentMutation } from '@/shared/store/services/course-service';
 import { useAppSelector } from '@/shared/store';
 import { studentSubscribeSchema } from '@/schemas';

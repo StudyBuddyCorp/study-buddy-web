@@ -1,23 +1,23 @@
-import { Button } from '@ui/button';
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from '@ui/command';
+import { UseFormReturn } from 'react-hook-form';
+import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
+import { CommandList } from 'cmdk';
+import { useTranslation } from 'react-i18next';
+import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@ui/form';
-import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';
-import { UseFormReturn } from 'react-hook-form';
-import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons';
-import { CommandList } from 'cmdk';
-import { useTranslation } from 'react-i18next';
+} from '@/ui/form';
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from '@/ui/command';
+import { Button } from '@/ui/button';
 import { cn } from '@/shared/lib/utils';
 import { Course } from '@/entities/course';
 

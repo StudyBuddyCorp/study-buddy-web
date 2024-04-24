@@ -1,6 +1,6 @@
-import { Course } from '@course';
-import CourseCard from '@course/course-card';
 import { FC } from 'react';
+import { Course } from '@/entities/course';
+import { CourseCard } from '@/features/course/course-card';
 
 interface Props {
   courses?: Course[];

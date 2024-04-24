@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader } from '@ui/card';
 import { useTranslation } from 'react-i18next';
 import { CircleAlert } from 'lucide-react';
-import { Role } from '@user/';
-import CardSkeleton from '@ui/card-skeleton';
-import { SubscribeStudentForm } from './form';
+import { CardSkeleton } from '@/ui/card-skeleton';
+import { SubscribeStudentForm } from '@/features/course/subscribe-student-card/form';
+import { Card, CardContent, CardHeader } from '@/ui/card';
+import { Role } from '@/entities/user';
 import { useGetCoursesQuery } from '@/shared/store/services/course-service';
 import { useGetUsersQuery } from '@/shared/store/services/user-service';
 

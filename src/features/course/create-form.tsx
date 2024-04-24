@@ -1,10 +1,10 @@
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@ui/form';
-import { Input } from '@ui/input';
-import { SpinnerButton } from '@ui/SpinnerButton';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/ui/form';
+import { Input } from '@/ui/input';
+import { SpinnerButton } from '@/ui/spinner-button';
 import { courseAPI } from '@/shared/store/services/course-service';
 import { Card, CardContent, CardHeader } from '@/shared/components/ui/card';
 import { Textarea } from '@/shared/components/ui/textarea';

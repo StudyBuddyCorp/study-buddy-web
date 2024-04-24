@@ -1,7 +1,7 @@
-import { Course } from '@course';
-import CourseCard from '@course/course-card';
-import clsx from 'clsx';
 import { FC } from 'react';
+import clsx from 'clsx';
+import { Course } from '@/entities/course';
+import { CourseCard } from '@/features/course/course-card';
 
 interface Props {
   courses?: Course[];

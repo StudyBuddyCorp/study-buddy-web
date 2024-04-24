@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from '@/shared/components/ui/form';
 import { Input } from '@/shared/components/ui/input';
-import { SpinnerButton } from '@/shared/components/ui/SpinnerButton';
+import { SpinnerButton } from '@/shared/components/ui/spinner-button';
 
 import { useGetSpecialtyQuery } from '@/shared/store/services/specialty-service';
 import { useGetDepartmentQuery } from '@/shared/store/services/department-service';

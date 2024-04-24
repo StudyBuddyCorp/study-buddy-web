@@ -1,9 +1,9 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { User } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
-import { ModeToggle } from '@ui/mode-toggle';
-import { Button } from '@ui/button';
 import NavItem from './nav-item';
+import { ModeToggle } from '@/ui/mode-toggle';
+import { Button } from '@/ui/button';
 import { useAppSelector } from '@/shared/store';
 
 type Link = { link: string; children: ReactNode };

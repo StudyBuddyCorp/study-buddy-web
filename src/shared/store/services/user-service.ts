@@ -1,14 +1,14 @@
-import { Role, User } from '@user/';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
   CreateUserResponse,
   GetStudentsResponse,
-} from '@user/response';
+} from '@/entities/user/response';
 import {
   CreateUserRequest,
   GetStudentsRequest as GetUsersRequest,
   UserCountRequest,
-} from '@user/request';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+} from '@/entities/user/request';
+import { Role, User } from '@/entities/user';
 import {
   AuthenticationResponse,
   LoginRequest,

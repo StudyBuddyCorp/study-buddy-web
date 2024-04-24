@@ -1,19 +1,13 @@
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@ui/form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@ui/input';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as z from 'zod';
 import { formSchema } from './form-schema';
+import { Input } from '@/ui/input';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/ui/form';
 import { userAPI } from '@/shared/store/services/user-service';
-import SpinnerButton from '@/shared/components/ui/SpinnerButton';
+import { SpinnerButton } from '@/ui/spinner-button';
 
 const AuthPage = () => {
   const [login, { isLoading }] = userAPI.useLoginMutation();

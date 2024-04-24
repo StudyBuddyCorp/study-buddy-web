@@ -1,13 +1,13 @@
 import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-import { Card, CardContent, CardHeader } from '@ui/card';
-import CardLazy from '@ui/card-lazy';
-import CourseDeleteDialog from '@course/course-delete-dialog/component';
-import CourseEditDialog from '@course/course-edit-dialog/component';
+import { Card, CardContent, CardHeader } from '@/ui/card';
+import CardLazy from '@/ui/card-lazy';
 import { courseSlice } from '@/shared/store/reducers/course-slice';
 import { gd } from '@/shared/lib/utils';
 import { useAppDispatch, useAppSelector } from '@/shared/store';
+import { CourseEditDialog } from '@/features/course/edit-form';
+import { CourseDeleteDialog } from '@/features/course/delete-form';
 
 const CourseDetails = () => {
   const { t } = useTranslation();

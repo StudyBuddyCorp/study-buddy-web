@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Loader2 } from 'lucide-react';
-import { Role } from '@/entities/user/user';
+import { Role } from '@/entities/user';
 import { Input } from '@/shared/components/ui/input';
 import {
   Select,
@@ -23,7 +23,7 @@ import { useGetGroupsQuery } from '@/shared/store/services/group-service';
 import { useGetSpecialtyQuery } from '@/shared/store/services/specialty-service';
 import { useGetUsersQuery } from '@/shared/store/services/user-service';
 
-const UserTable = () => {
+export const UserTable = () => {
   const [department, setDepartment] = useState('');
   const [specialty, setSpecialty] = useState('');
   const [groupId, setGroupId] = useState('');
@@ -88,7 +88,6 @@ const UserTable = () => {
               <SelectItem
                 key={dep}
                 value={dep}>
-                {' '}
                 {dep}
               </SelectItem>
             ))}
@@ -105,7 +104,6 @@ const UserTable = () => {
               <SelectItem
                 key={specialty}
                 value={specialty}>
-                {' '}
                 {specialty}
               </SelectItem>
             ))}
@@ -159,5 +157,3 @@ const UserTable = () => {
     </>
   );
 };
-
-export default UserTable;

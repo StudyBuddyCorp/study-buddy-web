@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Role } from '@/entities/user/user';
+import { Role } from '@/entities/user';
 import { Button } from '@/shared/components/ui/button';
 import { useAppSelector } from '@/shared/store';
 import { userAPI } from '@/shared/store/services/user-service';

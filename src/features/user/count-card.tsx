@@ -1,12 +1,13 @@
-import { Card, CardContent, CardHeader } from '@ui/card';
 import { useTranslation } from 'react-i18next';
 import { CircleAlert } from 'lucide-react';
-import CardSkeleton from '@ui/card-skeleton';
-import { useCountQuery } from '@/shared/store/services/course-service';
+import { Card, CardContent, CardHeader } from '@/ui/card';
+import { CardSkeleton } from '@/ui/card-skeleton';
+import { Role } from '@/entities/user';
+import { useCountQuery } from '@/shared/store/services/user-service';
 
-const CourseCountCard = () => {
+const StudentCountCard = () => {
   const { t } = useTranslation();
-  const { data, isLoading } = useCountQuery();
+  const { data, isLoading } = useCountQuery({ role: Role.STUDENT });
 
   if (isLoading) {
     return <CardSkeleton />;
@@ -15,7 +16,7 @@ const CourseCountCard = () => {
   return (
     <Card className='w-full'>
       <CardHeader>
-        <h2 className='font-light'>{t('course.count-card.header')}</h2>
+        <h2 className='font-light'>{t('student.count-card.header')}</h2>
       </CardHeader>
       <CardContent className='flex-col gap-0 flex justify-center items-center w-full p-8'>
         {data ? (
@@ -31,4 +32,4 @@ const CourseCountCard = () => {
   );
 };
 
-export default CourseCountCard;
+export default StudentCountCard;

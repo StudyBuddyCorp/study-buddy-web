@@ -7,9 +7,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@ui/form';
-import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';
-import { Button } from '@ui/button';
+} from '@/ui/form';
+import { Popover, PopoverContent, PopoverTrigger } from '@/ui/popover';
+import { Button } from '@/ui/button';
 import { cn } from '@/shared/lib/utils';
 import {
   Command,
@@ -18,7 +18,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/shared/components/ui/command';
+} from '@/ui/command';
 import { User } from '@/entities/user';
 
 interface Props {

@@ -5,7 +5,7 @@ import CourseGrid from './course-grid';
 import CourseList from './course-list';
 import { useGetCoursesQuery } from '@/shared/store/services/course-service';
 
-const CoursesBlock = () => {
+export const CoursesBlock = () => {
   const { t } = useTranslation();
 
   const { data: courses } = useGetCoursesQuery({});
@@ -25,5 +25,3 @@ const CoursesBlock = () => {
     </div>
   );
 };
-
-export default CoursesBlock;

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useToast } from '@ui/use-toast';
 import { useAppDispatch, useAppSelector } from '../store';
 import { authSlice } from '../store/reducers/user-slice';
+import { useToast } from '@/ui/use-toast';
 
 export const useAuth = () => {
   const { toast } = useToast();

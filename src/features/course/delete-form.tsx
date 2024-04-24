@@ -1,4 +1,5 @@
-import { Button } from '@ui/button';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@/ui/button';
 import {
   Dialog,
   DialogClose,
@@ -7,12 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@ui/dialog';
-import { useTranslation } from 'react-i18next';
+} from '@/ui/dialog';
 import { useAppSelector } from '@/shared/store';
 import { useDeleteMutation } from '@/shared/store/services/course-service';
 
-const CourseDeleteDialog = () => {
+export const CourseDeleteDialog = () => {
   const { t } = useTranslation();
   const [deleteCourse, { isLoading }] = useDeleteMutation();
   const { course } = useAppSelector(state => state.courseReducer);
@@ -54,5 +54,3 @@ const CourseDeleteDialog = () => {
     </Dialog>
   );
 };
-
-export default CourseDeleteDialog;

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { GetDepartmentsResponse } from '@department/response';
+import { GetDepartmentsResponse } from '@/entities/department/response';
 import { API_URL } from '@/shared/lib/api';
 
 export const departmentAPI = createApi({

@@ -1,17 +1,17 @@
 import { HeartCrack } from 'lucide-react';
-import CourseCard from '@course/course-card';
-import UserTable from '@user/user-table/component';
-import { Button } from '@ui/button';
+import { CourseCard } from '@/features/course/course-card';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@ui/accordion';
+} from '@/ui/accordion';
+import { UserTable } from '@/widgets/user/user-table';
+import { Button } from '@/ui/button';
 import { useAppDispatch, useAppSelector } from '@/shared/store';
 import { courseSlice } from '@/shared/store/reducers/course-slice';
 
-const SelectSubscriber = () => {
+export const SelectSubscriber = () => {
   const { course } = useAppSelector(state => state.courseReducer);
   const dispatch = useAppDispatch();
   const { setCourse } = courseSlice.actions;
@@ -55,5 +55,3 @@ const SelectSubscriber = () => {
     );
   }
 };
-
-export default SelectSubscriber;

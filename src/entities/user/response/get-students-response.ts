@@ -1,5 +1,5 @@
 import { Response } from '../../../shared/lib/response';
-import { User } from '../user';
+import { User } from '@/entities/user';
 
 export interface UserDtoes {
   userDtoes?: User[];

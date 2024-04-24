@@ -59,6 +59,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      '@/store': path.resolve(__dirname, './src/shared/store'),
+      '@/ui': path.resolve(__dirname, './src/shared/components/ui'),
       '@': path.resolve(__dirname, './src'),
     },
   },

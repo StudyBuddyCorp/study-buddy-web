@@ -1,15 +1,15 @@
-import CardLazy from '@ui/card-lazy';
 import { lazy, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import CardLazy from '@/ui/card-lazy';
 
 const CourseCreateForm = lazy(
-  () => import('@/features/course/course-create-form/component'),
+  () => import('@/features/course/create-form'),
 );
 const CourseCountCardForm = lazy(
-  () => import('@/features/course/course-count-card/component'),
+  () => import('@/features/course/count-card'),
 );
 const StudentCountForm = lazy(
-  () => import('@/features/course/student-count-card/component'),
+  () => import('@/features/user/count-card'),
 );
 const SubscribeStudentForm = lazy(
   () => import('@/features/course/subscribe-student-card/component'),

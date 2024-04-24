@@ -13,7 +13,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/store';
 import { Button } from '@/shared/components/ui/button';
 import { courseSlice } from '@/shared/store/reducers/course-slice';
 import { Textarea } from '@/shared/components/ui/textarea';
-import SpinnerButton from '@/shared/components/ui/SpinnerButton';
+import { SpinnerButton } from '@/ui/spinner-button';
 
 const CoursePage = () => {
   const { id } = useParams();
