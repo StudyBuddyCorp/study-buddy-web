@@ -1,5 +1,5 @@
-import Heading from "./Heading";
-import SelectCourse from "./SelectCourse";
-import SelectSubscriber from "./SelectSubscriber";
+import { Heading } from '@/features/subscribe/heading';
+import { SelectSubscriber } from '@/features/subscribe/select-subscriber';
+import { SelectCourse } from '@/features/subscribe/select-course';
 
-export { Heading, SelectCourse,SelectSubscriber };
+export { Heading, SelectSubscriber, SelectCourse };

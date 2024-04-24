@@ -1,17 +1,12 @@
-import { ReactNode, Suspense } from "react";
-import CardSkeleton from "./card-skeleton";
+import { ReactNode, Suspense } from 'react';
+import { CardSkeleton } from '@/shared/components/ui/card-skeleton';
 
 interface Props {
-    children: ReactNode
+  children: ReactNode;
 }
 
 const CardLazy = ({ children }: Props) => {
-
-    return (
-        <Suspense fallback={<CardSkeleton />}>
-            {children}
-        </Suspense>
-    )
-}
+  return <Suspense fallback={<CardSkeleton />}>{children}</Suspense>;
+};
 
 export default CardLazy;

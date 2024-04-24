@@ -1,3 +1,3 @@
-import { Course } from "./ICourse";
+import { Course } from './course';
 
 export type { Course };
