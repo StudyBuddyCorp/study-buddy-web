@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from './layout';
+import Layout from './layout1';
 import {
   AdminCourse,
   AuthPage,
